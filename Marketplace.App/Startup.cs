@@ -34,8 +34,8 @@ namespace Marketplace.App
             });
 
 
-            services.AddEntityFrameworkNpgsql().AddDbContext<MarketPlaceDbContext>(opt=>opt.UseNpgsql("User ID=;Password=;Host=localhost;Port=5432;Database=marketplace.app;"));
-
+            //services.AddEntityFrameworkNpgsql().AddDbContext<MarketPlaceDbContext>(opt=>opt.UseNpgsql("User ID=;Password=;Host=localhost;Port=5432;Database=marketplace.app;"));
+            services.AddDbContext<MarketPlaceDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
