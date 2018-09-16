@@ -1,29 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Marketplace.Infrastructure.UnitOfWork;
+using Marketplace.Models;
 using Microsoft.AspNetCore.Mvc;
-using DBRepository.Factories;
-using DBRepository.Interfaces;
-using DBRepository.Repositories;
-using Models;
 
 namespace Marketplace.Controllers
 {
     [Route("api/[controller]")]
     public class MarketController : Controller
     {
-        readonly IMarketRepository _marketRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public MarketController(IMarketRepository marketRepository)
+        public MarketController(IUnitOfWork unitOfWork)
         {
-            _marketRepository = marketRepository;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpGet("[action]")]
-        public async Task<List<Market>> GetMarkets()
+        public async Task<IEnumerable<Market>> GetMarkets()
         {
-            return await _marketRepository.GetMarkets();
+            return await _unitOfWork.MarketRepository.Get();
         }
     }
 }

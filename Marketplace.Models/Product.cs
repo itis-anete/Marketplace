@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Models
+namespace Marketplace.Models
 {
     public class Product : Identity
     {

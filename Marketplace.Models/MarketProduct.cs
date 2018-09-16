@@ -1,4 +1,4 @@
-namespace Models
+namespace Marketplace.Models
 {
     public class MarketProduct : Identity
     {

@@ -1,11 +1,8 @@
-using DBRepository.Factories;
-using DBRepository.Interfaces;
-using DBRepository.Repositories;
+using Marketplace.Infrastructure.UnitOfWork;
+using Marketplace.Infrastructure.Ñontext.Factory;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -30,17 +27,13 @@ namespace Marketplace
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            services.AddScoped<IRepositoryContextFactory, RepositoryContextFactory>();
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
 
-            services.AddScoped<IProductRepository>(provider =>
-                new ProductRepository(Configuration.GetConnectionString("DefaultConnection"),
-                    provider.GetService<IRepositoryContextFactory>()));
-            services.AddScoped<IMarketRepository>(provider =>
-                new MarketRepository(Configuration.GetConnectionString("DefaultConnection"),
-                    provider.GetService<IRepositoryContextFactory>()));
+            services.AddScoped<IMarketPlaceDbContextFactory, MarketPlaceDbContextFactory>();
 
+            services.AddTransient<IUnitOfWork>(provider => new UnitOfWork(connectionString, provider.GetService<IMarketPlaceDbContextFactory>()));
         }
-
+        
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Models
+namespace Marketplace.Models
 {
     public abstract class Identity
     {

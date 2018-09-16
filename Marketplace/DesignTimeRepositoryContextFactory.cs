@@ -1,14 +1,14 @@
 ﻿using System.IO;
-using DBRepository;
-using DBRepository.Factories;
+using Marketplace.Infrastructure.Сontext;
+using Marketplace.Infrastructure.Сontext.Factory;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
 namespace Marketplace
 {
-    public class DesignTimeRepositoryContextFactory : IDesignTimeDbContextFactory<RepositoryContext>
+    public class DesignTimeRepositoryContextFactory : IDesignTimeDbContextFactory<MarketPlaceDbContext>
     {
-        public RepositoryContext CreateDbContext(string[] args)
+        public MarketPlaceDbContext CreateDbContext(string[] args)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -16,8 +16,7 @@ namespace Marketplace
 
             var config = builder.Build();
             var connectionString = config.GetConnectionString("DefaultConnection");
-            var repositoryFactory = new RepositoryContextFactory();
-
+            var repositoryFactory = new MarketPlaceDbContextFactory();
             return repositoryFactory.CreateDbContext(connectionString);
         }
     }
