@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Marketplace.Infrastructure.Migrations
 {
     [DbContext(typeof(MarketPlaceDbContext))]
-    [Migration("20180916182942_AddUser")]
-    partial class AddUser
+    [Migration("20180917151448_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -66,11 +66,7 @@ namespace Marketplace.Infrastructure.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("UserUId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserUId");
 
                     b.ToTable("Products");
                 });
@@ -99,13 +95,6 @@ namespace Marketplace.Infrastructure.Migrations
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Marketplace.Models.User")
-                        .WithMany("History")
-                        .HasForeignKey("UserUId");
-                });
-
-            modelBuilder.Entity("Marketplace.Models.Product", b =>
-                {
                     b.HasOne("Marketplace.Models.User")
                         .WithMany("Cart")
                         .HasForeignKey("UserUId");

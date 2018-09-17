@@ -35,13 +35,26 @@ namespace Marketplace.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    UId = table.Column<string>(nullable: false),
+                    Role = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.UId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "MarketProducts",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     MarketId = table.Column<int>(nullable: false),
-                    ProductId = table.Column<int>(nullable: false)
+                    ProductId = table.Column<int>(nullable: false),
+                    UserUId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -58,6 +71,12 @@ namespace Marketplace.Infrastructure.Migrations
                         principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_MarketProducts_Users_UserUId",
+                        column: x => x.UserUId,
+                        principalTable: "Users",
+                        principalColumn: "UId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -69,6 +88,11 @@ namespace Marketplace.Infrastructure.Migrations
                 name: "IX_MarketProducts_ProductId",
                 table: "MarketProducts",
                 column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MarketProducts_UserUId",
+                table: "MarketProducts",
+                column: "UserUId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -81,6 +105,9 @@ namespace Marketplace.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

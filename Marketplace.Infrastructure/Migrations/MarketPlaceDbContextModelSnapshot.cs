@@ -64,11 +64,7 @@ namespace Marketplace.Infrastructure.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("UserUId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserUId");
 
                     b.ToTable("Products");
                 });
@@ -97,13 +93,6 @@ namespace Marketplace.Infrastructure.Migrations
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Marketplace.Models.User")
-                        .WithMany("History")
-                        .HasForeignKey("UserUId");
-                });
-
-            modelBuilder.Entity("Marketplace.Models.Product", b =>
-                {
                     b.HasOne("Marketplace.Models.User")
                         .WithMany("Cart")
                         .HasForeignKey("UserUId");
