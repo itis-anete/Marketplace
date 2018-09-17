@@ -4,7 +4,7 @@ using Marketplace.Infrastructure.Сontext.Factory;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace Marketplace
+namespace Marketplace.Web
 {
     public class DesignTimeRepositoryContextFactory : IDesignTimeDbContextFactory<MarketPlaceDbContext>
     {

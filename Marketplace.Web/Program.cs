@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Marketplace
+namespace Marketplace.Web
 {
     public class Program
     {
