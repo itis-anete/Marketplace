@@ -1,4 +1,5 @@
-﻿using Marketplace.Infrastructure.Repositories;
+﻿using System.Threading.Tasks;
+using Marketplace.Infrastructure.Repositories;
 using Marketplace.Models;
 
 namespace Marketplace.Infrastructure.UnitOfWork
@@ -11,6 +12,6 @@ namespace Marketplace.Infrastructure.UnitOfWork
         BaseRepository<User> UserRepository { get; }
 
         void Dispose();
-        void Save();
+        Task<int> Save();
     }
 }

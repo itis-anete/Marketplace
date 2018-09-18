@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Marketplace.Infrastructure.Repositories;
 using Marketplace.Infrastructure.Сontext;
 using Marketplace.Infrastructure.Сontext.Factory;
@@ -32,7 +33,7 @@ namespace Marketplace.Infrastructure.UnitOfWork
         public BaseRepository<User> UserRepository =>
             _userRepository ?? (_userRepository = new BaseRepository<User>(_context));
 
-        public void Save() => _context.SaveChanges();
+        public Task<int> Save() => _context.SaveChangesAsync();
 
         public void Dispose()
         {
