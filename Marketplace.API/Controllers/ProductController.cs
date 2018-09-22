@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Marketplace.Infrastructure.UnitOfWork;
 using Marketplace.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Marketplace.API.Controllers
 {
@@ -20,11 +21,11 @@ namespace Marketplace.API.Controllers
         [HttpGet("[action]")]
         public async Task<IEnumerable<Product>> GetProducts()
         {
-            return await _unitOfWork.ProductRepository.Get();
+            return await _unitOfWork.ProductRepository.Get().Include(c=>c.InMarkets).ToListAsync();
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> AddProduct([FromBody]Product product)
+        public async Task<IActionResult> AddProduct(Product product)
         {
             _unitOfWork.ProductRepository.Insert(product);
 
@@ -34,7 +35,7 @@ namespace Marketplace.API.Controllers
         }
 
         [HttpPut("[action]")]
-        public async Task<IActionResult> UpdateProduct([FromBody]Product product)
+        public async Task<IActionResult> UpdateProduct(Product product)
         {
             _unitOfWork.ProductRepository.Update(product);
 
@@ -46,7 +47,7 @@ namespace Marketplace.API.Controllers
         [HttpDelete("[action]")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
-            var product = _unitOfWork.ProductRepository.Get(x => x.Id == id).Result.FirstOrDefault();
+            var product = _unitOfWork.ProductRepository.Get(x => x.Id == id).FirstOrDefault();
 
             _unitOfWork.ProductRepository.Delete(product);
 

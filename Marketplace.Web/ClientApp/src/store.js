@@ -7,7 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
 		loadedProducts: [],
-		loadedMarkets: []
+		loadedMarkets: [],
+		loadedMarketProducts: [],
   },
   mutations: {
 		setLoadedProducts (state, payload) {
@@ -15,6 +16,9 @@ export default new Vuex.Store({
 		},
 		setLoadedMarkets (state, payload) {
 			state.loadedMarkets = payload
+		},
+		setLoadedMarketProducts (state, payload) {
+			state.loadedMarketProducts = payload
 		}
   },
   actions: {
@@ -33,6 +37,14 @@ export default new Vuex.Store({
       } catch (err) {
         console.log(err)
       }
+		},
+		async loadMarketProducts({commit}, payload){
+			try{
+				let response = await axios.get('../api/MarketProduct/GetMarketProduct/' + payload.id)
+				commit('setLoadedMarketProducts', response.data)
+			} catch (err) {
+        console.log(err)
+      }
 		}
 	},
 	getters: {
@@ -41,6 +53,9 @@ export default new Vuex.Store({
 		},
 		loadedMarkets (state) {
 			return state.loadedMarkets
-		}
+		},
+		loadedMarketProducts (state) {
+      return state.loadedMarketProducts
+    }
 	}
 })

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Marketplace.Infrastructure.Migrations
 {
     [DbContext(typeof(MarketPlaceDbContext))]
-    [Migration("20180917151448_Init")]
+    [Migration("20180920141856_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,15 +43,11 @@ namespace Marketplace.Infrastructure.Migrations
 
                     b.Property<int>("ProductId");
 
-                    b.Property<string>("UserUId");
-
                     b.HasKey("Id");
 
                     b.HasIndex("MarketId");
 
                     b.HasIndex("ProductId");
-
-                    b.HasIndex("UserUId");
 
                     b.ToTable("MarketProducts");
                 });
@@ -94,10 +90,6 @@ namespace Marketplace.Infrastructure.Migrations
                         .WithMany("InMarkets")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Marketplace.Models.User")
-                        .WithMany("Cart")
-                        .HasForeignKey("UserUId");
                 });
 #pragma warning restore 612, 618
         }

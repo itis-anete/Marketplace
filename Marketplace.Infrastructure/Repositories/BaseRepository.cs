@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Marketplace.Infrastructure.Сontext;
+using Marketplace.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Marketplace.Infrastructure.Repositories
@@ -19,20 +20,20 @@ namespace Marketplace.Infrastructure.Repositories
             _dbSet = context.Set<TEntity>();
         }
 
-        public virtual async Task<IEnumerable<TEntity>> Get(Expression<Func<TEntity, bool>> filter = null,
+        public virtual IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null)
         {
             IQueryable<TEntity> query = _dbSet;
-
+            
             if (filter != null)
                 query = query.Where(filter);
 
             if (orderBy != null)
-                return await orderBy(query).ToListAsync();
+                return orderBy(query);
             else
-                return await query.ToListAsync();
+                return query;
         }
-        
+
         public virtual void Insert(TEntity entity) => _dbSet.Add(entity);
 
         public virtual void Delete(TEntity entityToDelete) => _dbSet.Remove(entityToDelete);

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Products from './views/Products.vue'
 import Markets from './views/Markets.vue'
+import Market from './views/Market.vue'
 
 Vue.use(Router)
 
@@ -24,6 +25,12 @@ export default new Router({
       path: '/markets',
       name: 'markets',
       component: Markets
-    }
+    },
+    {
+      path: '/markets/:id',
+      name: 'Market',
+      props: true,
+      component: Market
+    },
   ]
 })

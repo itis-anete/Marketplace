@@ -41,15 +41,11 @@ namespace Marketplace.Infrastructure.Migrations
 
                     b.Property<int>("ProductId");
 
-                    b.Property<string>("UserUId");
-
                     b.HasKey("Id");
 
                     b.HasIndex("MarketId");
 
                     b.HasIndex("ProductId");
-
-                    b.HasIndex("UserUId");
 
                     b.ToTable("MarketProducts");
                 });
@@ -92,10 +88,6 @@ namespace Marketplace.Infrastructure.Migrations
                         .WithMany("InMarkets")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Marketplace.Models.User")
-                        .WithMany("Cart")
-                        .HasForeignKey("UserUId");
                 });
 #pragma warning restore 612, 618
         }
