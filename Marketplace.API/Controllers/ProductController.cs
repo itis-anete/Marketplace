@@ -25,7 +25,7 @@ namespace Marketplace.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> AddProduct(Product product)
+        public async Task<IActionResult> AddProduct([FromBody]Product product)
         {
             _unitOfWork.ProductRepository.Insert(product);
 

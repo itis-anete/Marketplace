@@ -6,7 +6,7 @@ using Marketplace.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace Marketplace.API.Controllers
+namespace Marketplace.Web.Controllers
 {
     [Route("api/[controller]")]
     public class MarketProductController : Controller
@@ -31,13 +31,19 @@ namespace Marketplace.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> AddMarketProduct(MarketProduct marketProduct)
+        public async Task<IActionResult> AddMarketProduct([FromBody]MarketProduct marketProduct)
         {
-            _unitOfWork.MarketProductRepository.Insert(marketProduct);
+            if (!_unitOfWork.MarketProductRepository.Get().Any(x =>
+                x.MarketId == marketProduct.MarketId && x.ProductId == marketProduct.ProductId))
+            {
+                _unitOfWork.MarketProductRepository.Insert(marketProduct);
 
-            await _unitOfWork.Save();
+                await _unitOfWork.Save();
 
-            return Ok(marketProduct);
+                return Ok(marketProduct);
+            }
+
+            return BadRequest(marketProduct);
         }
 
         [HttpPut("[action]")]

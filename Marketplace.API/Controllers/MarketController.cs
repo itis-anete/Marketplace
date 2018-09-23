@@ -24,14 +24,23 @@ namespace Marketplace.API.Controllers
             return await _unitOfWork.MarketRepository.Get().Include(c => c.Products).ThenInclude(c=>c.Product).ToListAsync();
         }
 
-        [HttpPost("[action]")]
-        public async Task<IActionResult> AddMarket(Market market)
+        [HttpGet("[action]/{marketId}")]
+        public async Task<Market> GetMarket(int marketId)
         {
-            _unitOfWork.MarketRepository.Insert(market);
+            return await _unitOfWork.MarketRepository.Get(x=>x.Id == marketId).Include(c => c.Products).ThenInclude(c => c.Product).FirstOrDefaultAsync();
+        }
 
-            await _unitOfWork.Save();
+        [HttpPost("[action]")]
+        public async Task<IActionResult> AddMarket([FromBody]Market market)
+        {
+            if (!_unitOfWork.MarketRepository.Get().Any(x => x.Name == market.Name))
+            {
+                _unitOfWork.MarketRepository.Insert(market);
+                await _unitOfWork.Save();
+                return Ok(market);
+            }
 
-            return Ok(market);
+            return BadRequest(market);
         }
 
         [HttpPut("[action]")]

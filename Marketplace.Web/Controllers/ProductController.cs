@@ -6,7 +6,7 @@ using Marketplace.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace Marketplace.API.Controllers
+namespace Marketplace.Web.Controllers
 {
     [Route("api/[controller]")]
     public class ProductController : Controller
@@ -25,7 +25,7 @@ namespace Marketplace.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> AddProduct(Product product)
+        public async Task<IActionResult> AddProduct([FromBody]Product product)
         {
             _unitOfWork.ProductRepository.Insert(product);
 
