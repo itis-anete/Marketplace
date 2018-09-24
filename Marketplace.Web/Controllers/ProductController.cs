@@ -55,5 +55,12 @@ namespace Marketplace.Web.Controllers
 
             return Ok(product);
         }
+
+        public async Task<IEnumerable<Product>> FilterByName(string name)
+        {
+            var products = _unitOfWork.ProductRepository.Get(x => x.Name == name, z => z.OrderBy(y => y.Cost)).Include(c => c.InMarkets).ToListAsync();
+            return await products;
+        }
     }
+
 }
