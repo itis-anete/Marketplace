@@ -1,5 +1,6 @@
 <template>
   <v-container grid-list-xs>
+		<v-btn :to="'/markets/new'">Создать</v-btn>
 		<transition-group name="slide" tag="v-layout" class="row wrap justify-center">
 			<v-flex xs12 sm2 v-for="market in markets" :key="market.id" class="mr-4 mb-4" style="min-width:290px">		
 						<v-card :key="market.id">

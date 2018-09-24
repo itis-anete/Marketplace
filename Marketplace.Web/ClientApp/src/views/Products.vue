@@ -1,5 +1,6 @@
 <template>
   <v-container grid-list-xs>
+		<v-btn :to="'/products/new'">Создать</v-btn>
 		<transition-group name="slide" tag="v-layout" class="row wrap justify-center">
 			<v-flex xs12 sm2 v-for="product in products" :key="product.id" class="mr-4 mb-4" style="min-width:290px">		
 						<v-card :key="product.id">
@@ -24,7 +25,7 @@
 	computed: {
 		products () {
 			return this.$store.getters.loadedProducts
-		},
+		}
 	},
 	methods: {		
 	},

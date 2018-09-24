@@ -9,6 +9,7 @@ export default new Vuex.Store({
 		loadedProducts: [],
 		loadedMarkets: [],
 		loadedMarketProducts: [],
+		loadedMarket: null
   },
   mutations: {
 		setLoadedProducts (state, payload) {
@@ -16,6 +17,15 @@ export default new Vuex.Store({
 		},
 		setLoadedMarkets (state, payload) {
 			state.loadedMarkets = payload
+		},
+		setLoadedMarket (state, payload) {
+			state.loadedMarket = payload
+		},
+		createMarket (state, payload) {
+			state.loadedMarkets.push(payload)
+		},
+		createProduct (state, payload) {
+			state.loadedProducts.push(payload)
 		},
 		setLoadedMarketProducts (state, payload) {
 			state.loadedMarketProducts = payload
@@ -38,10 +48,41 @@ export default new Vuex.Store({
         console.log(err)
       }
 		},
+		async loadMarket({commit}, payload){
+			try{
+				let response = await axios.get('/api/Market/GetMarket/' + payload.id)
+				commit('setLoadedMarket', response.data)
+			} catch (err) {
+        console.log(err)
+      }
+		},
 		async loadMarketProducts({commit}, payload){
 			try{
 				let response = await axios.get('../api/MarketProduct/GetMarketProduct/' + payload.id)
 				commit('setLoadedMarketProducts', response.data)
+			} catch (err) {
+        console.log(err)
+      }
+		},
+		async createMarket({commit}, payload){
+			try{
+				let response = await axios.post('../api/Market/AddMarket/', payload)
+				commit('createMarket', response.data)
+			} catch (err) {
+        console.log(err)
+      }
+		},
+		async createProduct({commit}, payload){
+			try{
+				let response = await axios.post('../api/Product/AddProduct/', payload)
+				commit('createProduct', response.data)
+			} catch (err) {
+        console.log(err)
+      }
+		},
+		async createMarketProduct({commit}, payload){
+			try{
+				let response = await axios.post('../api/MarketProduct/AddMarketProduct/', payload)
 			} catch (err) {
         console.log(err)
       }
@@ -53,6 +94,9 @@ export default new Vuex.Store({
 		},
 		loadedMarkets (state) {
 			return state.loadedMarkets
+		},
+		loadedMarket (state) {
+			return state.loadedMarket
 		},
 		loadedMarketProducts (state) {
       return state.loadedMarketProducts
