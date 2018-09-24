@@ -1,3 +1,4 @@
+using Marketplace.Models.ProductData;
 using System.Collections.Generic;
 
 namespace Marketplace.Models
@@ -6,6 +7,6 @@ namespace Marketplace.Models
     {
         public string Name { get; set; }
 
-        public List<MarketProduct> Products { get; set; }
+        public List<ProductOffer> Products { get; set; }
     }
 }
