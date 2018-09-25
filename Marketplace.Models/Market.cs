@@ -7,6 +7,6 @@ namespace Marketplace.Models
     {
         public string Name { get; set; }
 
-        public List<ProductOffer> Products { get; set; }
+        public List<ProductOffer> ProductOffers { get; set; }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Marketplace.Infrastructure.UnitOfWork;
-using Marketplace.Models;
+using Marketplace.Models.ProductData;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,12 +21,15 @@ namespace Marketplace.Web.Controllers
         [HttpGet("[action]")]
         public async Task<IEnumerable<Product>> GetProducts()
         {
-            return await _unitOfWork.ProductRepository.Get().Include(c=>c.InMarkets).ToListAsync();
+            return await _unitOfWork.ProductRepository.Get().ToListAsync();
         }
 
         [HttpPost("[action]")]
         public async Task<IActionResult> AddProduct([FromBody]Product product)
         {
+            if (_unitOfWork.ProductRepository.Get().Any(x => x.Name == product.Name))
+                return BadRequest(product);
+
             _unitOfWork.ProductRepository.Insert(product);
 
             await _unitOfWork.Save();
@@ -55,12 +58,5 @@ namespace Marketplace.Web.Controllers
 
             return Ok(product);
         }
-
-        public async Task<IEnumerable<Product>> FilterByName(string name)
-        {
-            var products = _unitOfWork.ProductRepository.Get(x => x.Name == name, z => z.OrderBy(y => y.Cost)).Include(c => c.InMarkets).ToListAsync();
-            return await products;
-        }
     }
-
 }

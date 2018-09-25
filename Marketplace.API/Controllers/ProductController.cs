@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Marketplace.Infrastructure.UnitOfWork;
-using Marketplace.Models;
+using Marketplace.Models.ProductData;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,7 +21,7 @@ namespace Marketplace.API.Controllers
         [HttpGet("[action]")]
         public async Task<IEnumerable<Product>> GetProducts()
         {
-            return await _unitOfWork.ProductRepository.Get().Include(c=>c.InMarkets).ToListAsync();
+            return await _unitOfWork.ProductRepository.Get().ToListAsync();
         }
 
         [HttpPost("[action]")]

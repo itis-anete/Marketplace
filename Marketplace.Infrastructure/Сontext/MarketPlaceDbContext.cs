@@ -1,4 +1,5 @@
 ﻿using Marketplace.Models;
+using Marketplace.Models.ProductData;
 using Microsoft.EntityFrameworkCore;
 
 namespace Marketplace.Infrastructure.Сontext
@@ -13,7 +14,7 @@ namespace Marketplace.Infrastructure.Сontext
 
         public DbSet<Product> Products { get; set; }
 
-        public DbSet<MarketProduct> MarketProducts { get; set; }
+        public DbSet<ProductOffer> ProductOffers { get; set; }
 
         public DbSet<User> Users { get; set; }
     }

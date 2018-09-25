@@ -10,9 +10,8 @@
 						required
 					></v-text-field>
 					<v-text-field
-						v-model="cost"
-						:mask="mask"
-						label="Цена"
+						v-model="description"
+						label="Описание товара"
 						required
 					></v-text-field>
 					<v-btn
@@ -37,9 +36,12 @@ export default {
         v => !!v || 'Необходимо указать название товара',
         v => (v && v.length <= 15 ) || 'Название товара не более 15 символов'
 			],
-			mask: '######',
+			descriptionRules: [
+        v => !!v || 'Необходимо указать описание товара',
+        v => (v && v.length <= 100 ) || 'Название товара не более 100 символов'
+			],
 			name: '',
-			cost: ''
+			description: ''
     }
 	},
 	computed: {
@@ -48,7 +50,7 @@ export default {
     onCreateProduct () {
 				const product = {
 					Name: this.name,
-					Cost: this.cost
+					Description: this.description
 				}
         if (this.$refs.form.validate()) {
 					this.$store.dispatch('createProduct', product)

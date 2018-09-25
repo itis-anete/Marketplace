@@ -14,8 +14,15 @@
 						return-object
 						:rules="[v => !!v || 'Выберите товар']"
 						required
-					>						
-					</v-autocomplete>
+					>
+					</v-autocomplete>					
+					<v-text-field
+						v-model="price"
+						type="number"
+						label="Стоимость товара"
+						:rules="[v => !!v || 'Укажите стоимость товара']"
+						required
+					></v-text-field>
 					<v-btn
 						:disabled="!valid"
 						class="success ml-0"
@@ -35,32 +42,34 @@ export default {
   data() {
     return {
 			valid: true,
-      product: null,
+			product: null,
+			price: null
     }
 	},
 	computed: {
 		market() {
-			return this.$store.getters.loadedMarket
+			return this.$store.getters.market
 		},
 		products () {
-			return this.$store.getters.loadedProducts
+			return this.$store.getters.products
 		}
 	},
 	methods: {
     onCreateMarketProduct () {
-				const marketProduct = {
-					MarketId: this.id,
-					ProductId: this.product.id
-				}
-        if (this.$refs.form.validate()) {
-					this.$store.dispatch('createMarketProduct', marketProduct)
-					this.$router.push('/markets/'+this.id)
-        }
+			const productOffer = {
+				MarketId: this.id,
+				ProductId: this.product.id,
+				Price: this.price
+			}
+			if (this.$refs.form.validate()) {
+				this.$store.dispatch('createProductOffer', productOffer)
+				this.$router.push('/markets/' + this.id)
+			}
     }
 	},
 	created() {
 		if(!this.market)
-			this.$store.dispatch('loadMarket', {id: this.id})
+			this.$store.dispatch('loadMarket', this.id)
 			this.$store.dispatch('loadProducts')
 	},
 }

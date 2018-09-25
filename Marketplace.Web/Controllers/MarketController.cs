@@ -21,26 +21,29 @@ namespace Marketplace.Web.Controllers
         [HttpGet("[action]")]
         public async Task<IEnumerable<Market>> GetMarkets()
         {
-            return await _unitOfWork.MarketRepository.Get().Include(c => c.Products).ThenInclude(c=>c.Product).ToListAsync();
+            return await _unitOfWork.MarketRepository
+                .Get()
+                .Include(c => c.ProductOffers).ThenInclude(c=>c.Product).ToListAsync();
         }
 
         [HttpGet("[action]/{marketId}")]
-        public async Task<Market> GetMarket(int marketId)
+        public async Task<Market> GetMarketById(int marketId)
         {
-            return await _unitOfWork.MarketRepository.Get(x=>x.Id == marketId).Include(c => c.Products).ThenInclude(c => c.Product).FirstOrDefaultAsync();
+            return await _unitOfWork.MarketRepository
+                .Get(x=>x.Id == marketId)
+                .Include(c => c.ProductOffers).ThenInclude(c => c.Product).FirstOrDefaultAsync();
         }
 
         [HttpPost("[action]")]
         public async Task<IActionResult> AddMarket([FromBody]Market market)
         {
-            if (!_unitOfWork.MarketRepository.Get().Any(x => x.Name == market.Name))
-            {
-                _unitOfWork.MarketRepository.Insert(market);
-                await _unitOfWork.Save();
-                return Ok(market);
-            }
+            if (_unitOfWork.MarketRepository.Get().Any(x => x.Name == market.Name))
+                return BadRequest(market);
 
-            return BadRequest(market);
+            _unitOfWork.MarketRepository.Insert(market);
+            await _unitOfWork.Save();
+            return Ok(market);
+
         }
 
         [HttpPut("[action]")]

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Marketplace.Infrastructure.Migrations
 {
     [DbContext(typeof(MarketPlaceDbContext))]
-    [Migration("20180920141856_Init")]
-    partial class Init
+    [Migration("20180924221304_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,13 +33,30 @@ namespace Marketplace.Infrastructure.Migrations
                     b.ToTable("Markets");
                 });
 
-            modelBuilder.Entity("Marketplace.Models.MarketProduct", b =>
+            modelBuilder.Entity("Marketplace.Models.ProductData.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("Marketplace.Models.ProductData.ProductOffer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("MarketId");
+
+                    b.Property<decimal>("Price");
 
                     b.Property<int>("ProductId");
 
@@ -49,22 +66,7 @@ namespace Marketplace.Infrastructure.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("MarketProducts");
-                });
-
-            modelBuilder.Entity("Marketplace.Models.Product", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<decimal>("Cost");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Products");
+                    b.ToTable("ProductOffers");
                 });
 
             modelBuilder.Entity("Marketplace.Models.User", b =>
@@ -79,15 +81,15 @@ namespace Marketplace.Infrastructure.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Marketplace.Models.MarketProduct", b =>
+            modelBuilder.Entity("Marketplace.Models.ProductData.ProductOffer", b =>
                 {
                     b.HasOne("Marketplace.Models.Market", "Market")
-                        .WithMany("Products")
+                        .WithMany("ProductOffers")
                         .HasForeignKey("MarketId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Marketplace.Models.Product", "Product")
-                        .WithMany("InMarkets")
+                    b.HasOne("Marketplace.Models.ProductData.Product", "Product")
+                        .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

@@ -1,19 +1,28 @@
 <template>
   <v-container grid-list-xs>
-		<v-btn :to="'/markets/new'">Создать</v-btn>
+		<v-btn :to="'/market/new'">Создать</v-btn>
+		<v-flex xs12 
+			class="text-xs-center pt-2 pb-2" 
+			v-if="loading"
+		>
+			<v-progress-circular
+				indeterminate
+				color="primary"
+				:width="7"
+				:size="70"
+			></v-progress-circular>
+		</v-flex>
 		<transition-group name="slide" tag="v-layout" class="row wrap justify-center">
-			<v-flex xs12 sm2 v-for="market in markets" :key="market.id" class="mr-4 mb-4" style="min-width:290px">		
-						<v-card :key="market.id">
+			<v-flex xs12 sm2 v-for="market in markets" :key="market.id" class="mr-4 mb-4" style="min-width:290px" v-if="markets">
+				<router-link :to="'/markets/' + market.id">
+					<v-hover>	
+						<v-card :key="market.id" slot-scope="{ hover }" :class="`elevation-${hover ? 8 : 0}`" class="mx-auto pointer">
 							<v-card-title primary-title class="accent white--text" style="min-height: 70px">
 								{{market.name}}
-							</v-card-title>
-							<v-card-actions>
-								<v-btn flat :to="'/markets/' + market.id">
-									<v-icon left light>arrow_forward</v-icon>
-									Подробнее
-								</v-btn>
-              </v-card-actions>
-						</v-card>				
+							</v-card-title>					
+						</v-card>						
+					</v-hover>	
+				</router-link>						
 			</v-flex>			
 		</transition-group>	
 	</v-container>
@@ -27,10 +36,11 @@
 	},
 	computed: {
 		markets () {
-			return this.$store.getters.loadedMarkets
+			return this.$store.getters.markets
 		},
-	},
-	methods: {		
+		loading () {
+			return this.$store.getters.loading
+		}
 	},
 	created () {
 		this.$store.dispatch('loadMarkets')
@@ -60,6 +70,10 @@
 
 	.slide-move {
 			transition: all 1s;
+	}
+
+	.pointer {
+		cursor: pointer;
 	}
 </style>
 

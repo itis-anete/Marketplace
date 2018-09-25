@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Marketplace.Models.ProductData;
 
 namespace Marketplace.Models
 {
@@ -10,7 +11,7 @@ namespace Marketplace.Models
         public string UId { get; set; }
 
         [NotMapped]
-        public List<MarketProduct> Cart { get; set; }
+        public List<ProductOffer> Cart { get; set; }
 
         // public List<Orders> History { get; set; }
 

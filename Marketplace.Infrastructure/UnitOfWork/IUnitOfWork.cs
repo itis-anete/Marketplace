@@ -1,12 +1,13 @@
 ﻿using System.Threading.Tasks;
 using Marketplace.Infrastructure.Repositories;
 using Marketplace.Models;
+using Marketplace.Models.ProductData;
 
 namespace Marketplace.Infrastructure.UnitOfWork
 {
     public interface IUnitOfWork
     {
-        BaseRepository<MarketProduct> MarketProductRepository { get; }
+        BaseRepository<ProductOffer> ProductOfferRepository { get; }
         BaseRepository<Market> MarketRepository { get; }
         BaseRepository<Product> ProductRepository { get; }
         BaseRepository<User> UserRepository { get; }

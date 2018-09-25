@@ -1,12 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import Products from './views/Products.vue'
-import Markets from './views/Markets.vue'
-import Market from './views/Market.vue'
-import CreateMarket from './views/CreateMarket.vue'
-import CreateProduct from './views/CreateProduct.vue'
-import FillMarket from './views/FillMarket.vue'
+
+import Products from './views/Product/Products.vue'
+import CreateProduct from './views/Product/CreateProduct.vue'
+
+import Markets from './views/Market/Markets.vue'
+import Market from './views/Market/Market.vue'
+import CreateMarket from './views/Market/CreateMarket.vue'
+
+import CreateProductOffer from './views/ProductOffer/CreateProductOffer.vue'
+import ProductOffer from './views/ProductOffer/ProductOffer.vue'
 
 Vue.use(Router)
 
@@ -16,40 +20,46 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'Home',
       component: Home
     },
     {
       path: '/products',
-      name: 'products',
+      name: 'Products',
       component: Products
 		},
 		{
       path: '/products/new',
-      name: 'CreateMarketProduct',
+      name: 'CreateProduct',
       component: CreateProduct
-		},	
+		},
     {
       path: '/markets',
-      name: 'markets',
+      name: 'Markets',
       component: Markets
-		},
-		{
-      path: '/markets/new',
-      name: 'CreateMarket',
-      component: CreateMarket
-		},
-		{
-      path: '/markets/:id/fill',
-			name: 'FillMarket',
-			props: true,
-      component: FillMarket
-    },
+		},		
     {
       path: '/markets/:id',
       name: 'Market',
       props: true,
       component: Market
     },
+		{
+      path: '/market/new',
+      name: 'CreateMarket',
+      component: CreateMarket
+		},
+		{
+      path: '/productOffer/:id',
+      name: 'ProductPffer',
+			component: ProductOffer,
+			props: true
+		},
+		{
+      path: '/markets/:id/createProductOffer',
+			name: 'CreateProductOffer',
+			props: true,
+      component: CreateProductOffer
+    }
   ]
 })

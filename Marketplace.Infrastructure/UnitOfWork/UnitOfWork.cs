@@ -4,6 +4,7 @@ using Marketplace.Infrastructure.Repositories;
 using Marketplace.Infrastructure.Сontext;
 using Marketplace.Infrastructure.Сontext.Factory;
 using Marketplace.Models;
+using Marketplace.Models.ProductData;
 
 namespace Marketplace.Infrastructure.UnitOfWork
 {
@@ -18,7 +19,7 @@ namespace Marketplace.Infrastructure.UnitOfWork
 
         private BaseRepository<Product> _productRepository;
         private BaseRepository<Market> _marketRepository;
-        private BaseRepository<MarketProduct> _marketProductRepository;
+        private BaseRepository<ProductOffer> _productOfferRepository;
         private BaseRepository<User> _userRepository;
 
         public BaseRepository<Product> ProductRepository =>
@@ -27,8 +28,8 @@ namespace Marketplace.Infrastructure.UnitOfWork
         public BaseRepository<Market> MarketRepository =>
             _marketRepository ?? (_marketRepository = new BaseRepository<Market>(_context));
 
-        public BaseRepository<MarketProduct> MarketProductRepository =>
-            _marketProductRepository ?? (_marketProductRepository = new BaseRepository<MarketProduct>(_context));
+        public BaseRepository<ProductOffer> ProductOfferRepository =>
+            _productOfferRepository ?? (_productOfferRepository = new BaseRepository<ProductOffer>(_context));
 
         public BaseRepository<User> UserRepository =>
             _userRepository ?? (_userRepository = new BaseRepository<User>(_context));

@@ -34,17 +34,15 @@ export default {
       name: '',
     }
 	},
-	computed: {
-	},
 	methods: {
     onCreateMarket () {
-				const market = {
-					Name: this.name
-				}
-        if (this.$refs.form.validate()) {
-					this.$store.dispatch('createMarket', market)
-					this.$router.push('/markets')
-        }
+			const market = {
+				Name: this.name
+			}
+			if (this.$refs.form.validate()) {
+				this.$store.dispatch('createMarket', market)
+				this.$router.push('/markets')
+			}
     }
   }
 }
