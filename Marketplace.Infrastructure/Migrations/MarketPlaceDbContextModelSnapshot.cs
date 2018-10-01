@@ -3,7 +3,6 @@ using Marketplace.Infrastructure.Сontext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Marketplace.Infrastructure.Migrations
 {
@@ -37,8 +36,6 @@ namespace Marketplace.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Description");
-
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
@@ -51,6 +48,10 @@ namespace Marketplace.Infrastructure.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Image");
 
                     b.Property<int>("MarketId");
 

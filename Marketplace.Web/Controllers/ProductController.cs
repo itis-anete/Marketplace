@@ -38,7 +38,7 @@ namespace Marketplace.Web.Controllers
         }
 
         [HttpPut("[action]")]
-        public async Task<IActionResult> UpdateProduct(Product product)
+        public async Task<IActionResult> UpdateProduct([FromBody]Product product)
         {
             _unitOfWork.ProductRepository.Update(product);
 
@@ -47,7 +47,7 @@ namespace Marketplace.Web.Controllers
             return Ok(product);
         }
 
-        [HttpDelete("[action]")]
+        [HttpDelete("[action]/{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
             var product = _unitOfWork.ProductRepository.Get(x => x.Id == id).FirstOrDefault();

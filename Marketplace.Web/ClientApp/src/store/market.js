@@ -14,6 +14,9 @@ export default {
 		},
 		createMarket (state, payload) {
 			state.markets.push(payload)
+		},
+		deleteMarket (state, payload) {
+			state.markets.splice(state.markets.findIndex(x=>x.id === payload), 1)
 		}
   },
   actions: {
@@ -46,6 +49,24 @@ export default {
 			} catch (err) {
         console.log(err)
       }
+		},
+		async deleteMarket({commit}, payload){
+			try{
+				let response = await axios.delete('../api/Market/DeleteMarket/' + payload)
+				commit('deleteMarket', response.data.id)
+			}
+			catch (error) {
+				console.log(error)				
+			}
+		},
+		async editMarket({commit}, payload) {
+			try{
+				let response = await axios.put('../api/Market/UpdateMarket', payload)
+				commit('setMarket', response.data)
+			}
+			catch (error) {
+				console.log(error)				
+			}
 		}
   },
   getters: {

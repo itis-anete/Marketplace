@@ -23,6 +23,19 @@
 						:rules="[v => !!v || 'Укажите стоимость товара']"
 						required
 					></v-text-field>
+					<v-text-field
+						v-model="description"
+						label="Описание товара"
+						:rules="descriptionRules"
+						required
+					></v-text-field>
+					<v-text-field
+						v-model="image"
+						label="Изображение товара"
+						:rules="[v => !!v || 'Укажите ссылку на изображение товара']"
+						required
+					></v-text-field>
+					<img :src="image" v-if="image" height="200px"> <br>
 					<v-btn
 						:disabled="!valid"
 						class="success ml-0"
@@ -43,7 +56,13 @@ export default {
     return {
 			valid: true,
 			product: null,
-			price: null
+			price: null,			
+			descriptionRules: [
+        v => !!v || 'Необходимо указать описание товара',
+        v => (v && v.length <= 1000 ) || 'Описание товара не более 1000 символов'
+			],
+			description: '',
+			image: ''
     }
 	},
 	computed: {
@@ -59,7 +78,9 @@ export default {
 			const productOffer = {
 				MarketId: this.id,
 				ProductId: this.product.id,
-				Price: this.price
+				Price: this.price,
+				Description: this.description,
+				Image: this.image
 			}
 			if (this.$refs.form.validate()) {
 				this.$store.dispatch('createProductOffer', productOffer)

@@ -65,8 +65,18 @@ namespace Marketplace.Web.Controllers
         }
 
         [HttpPut("[action]")]
-        public async Task<IActionResult> UpdateProductOffer(ProductOffer productOffer)
+        public async Task<IActionResult> UpdateProductOffer([FromBody]ProductOffer updatedProductOffer)
         {
+            var productOffer = _unitOfWork.ProductOfferRepository
+                .Get(x => x.Id == updatedProductOffer.Id)
+                .Include(m => m.Market).Include(p => p.Product).FirstOrDefault();
+
+            productOffer.Price = updatedProductOffer.Price;
+
+            productOffer.Description = updatedProductOffer.Description;
+
+            productOffer.Image = updatedProductOffer.Image;
+
             _unitOfWork.ProductOfferRepository.Update(productOffer);
 
             await _unitOfWork.Save();
@@ -74,7 +84,7 @@ namespace Marketplace.Web.Controllers
             return Ok(productOffer);
         }
 
-        [HttpDelete("[action]")]
+        [HttpDelete("[action]/{id}")]
         public async Task<IActionResult> DeleteProductOffer(int id)
         {
             var productOffer = _unitOfWork.ProductOfferRepository.Get(x => x.Id == id).FirstOrDefault();

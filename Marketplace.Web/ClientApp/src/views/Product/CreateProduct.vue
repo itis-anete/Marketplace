@@ -9,11 +9,7 @@
 						label="Название товара"
 						required
 					></v-text-field>
-					<v-text-field
-						v-model="description"
-						label="Описание товара"
-						required
-					></v-text-field>
+					
 					<v-btn
 						:disabled="!valid"
 						class="success ml-0"
@@ -34,14 +30,9 @@ export default {
 			valid: true,
 			nameRules: [
         v => !!v || 'Необходимо указать название товара',
-        v => (v && v.length <= 15 ) || 'Название товара не более 15 символов'
+        v => (v && v.length <= 30 ) || 'Название товара не более 30 символов'
 			],
-			descriptionRules: [
-        v => !!v || 'Необходимо указать описание товара',
-        v => (v && v.length <= 100 ) || 'Название товара не более 100 символов'
-			],
-			name: '',
-			description: ''
+			name: ''
     }
 	},
 	computed: {

@@ -51,7 +51,7 @@
 		</v-toolbar>
 		<main>
 			<transition name="slide-fade" mode="out-in">
-			<router-view></router-view>
+			<router-view :key="$route.path"></router-view>
 			</transition>
 		</main>
   </v-app>
@@ -79,6 +79,10 @@ export default {
 </script>
 
 <style>
+	a {
+		text-decoration: none;
+	}
+
 	.slide-fade-enter-active {
 		transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 	}

@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 using Marketplace.Infrastructure.Сontext;
-using Marketplace.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Marketplace.Infrastructure.Repositories
@@ -39,6 +36,6 @@ namespace Marketplace.Infrastructure.Repositories
         public virtual void Delete(TEntity entityToDelete) => _dbSet.Remove(entityToDelete);
 
         public virtual void Update(TEntity entityToUpdate) =>
-            _context.Entry(entityToUpdate).State = EntityState.Modified;
+            _context.Attach(entityToUpdate).State = EntityState.Modified;
     }
 }
