@@ -329,3 +329,7 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+/.idea/.idea.MarketPlace/.idea/misc.xml
+/MarketPlace.DbAccess/obj/Debug/netcoreapp2.2/MarketPlace.DbAccess.csprojAssemblyReference.cache
+/MarketPlace.Sockets/obj/Debug/netcoreapp2.2/MarketPlace.Sockets.csprojAssemblyReference.cache
+/MarketPlace.sln.DotSettings.user

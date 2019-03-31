@@ -1,9 +1,0 @@
-C:\Repository\DotNet\MarketPlace\MarketPlace.Sockets\bin\Debug\netcoreapp2.2\MarketPlace.Sockets.deps.json
-C:\Repository\DotNet\MarketPlace\MarketPlace.Sockets\bin\Debug\netcoreapp2.2\MarketPlace.Sockets.dll
-C:\Repository\DotNet\MarketPlace\MarketPlace.Sockets\bin\Debug\netcoreapp2.2\MarketPlace.Sockets.pdb
-C:\Repository\DotNet\MarketPlace\MarketPlace.Sockets\obj\Debug\netcoreapp2.2\MarketPlace.Sockets.csprojAssemblyReference.cache
-C:\Repository\DotNet\MarketPlace\MarketPlace.Sockets\obj\Debug\netcoreapp2.2\MarketPlace.Sockets.csproj.CoreCompileInputs.cache
-C:\Repository\DotNet\MarketPlace\MarketPlace.Sockets\obj\Debug\netcoreapp2.2\MarketPlace.Sockets.AssemblyInfoInputs.cache
-C:\Repository\DotNet\MarketPlace\MarketPlace.Sockets\obj\Debug\netcoreapp2.2\MarketPlace.Sockets.AssemblyInfo.cs
-C:\Repository\DotNet\MarketPlace\MarketPlace.Sockets\obj\Debug\netcoreapp2.2\MarketPlace.Sockets.dll
-C:\Repository\DotNet\MarketPlace\MarketPlace.Sockets\obj\Debug\netcoreapp2.2\MarketPlace.Sockets.pdb
