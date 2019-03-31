@@ -6,6 +6,9 @@
     "projectPath": "C:\\Repository\\DotNet\\MarketPlace\\MarketPlace.Sockets\\MarketPlace.Sockets.csproj",
     "outputPath": "C:\\Repository\\DotNet\\MarketPlace\\MarketPlace.Sockets\\obj\\",
     "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+    ],
     "originalTargetFrameworks": [
       "netcoreapp2.2"
     ],

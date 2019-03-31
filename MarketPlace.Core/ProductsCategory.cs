@@ -1,4 +1,5 @@
 using System;
+using MarketPlace.Infrastructure;
 
 namespace MarketPlace.Core
 {
@@ -11,10 +12,8 @@ namespace MarketPlace.Core
         public ProductsCategory(string categoryName)
         {
             Id = Guid.NewGuid();
-            if (string.IsNullOrEmpty(categoryName))
-            {
-                throw new ArgumentException(nameof(categoryName));
-            }
+            
+            CategoryName = categoryName.CheckValue();
         }
          
         public Guid Id { get; private set; }

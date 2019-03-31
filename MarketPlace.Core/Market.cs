@@ -6,29 +6,28 @@ namespace MarketPlace.Core
 {
     public class Market
     {
-        private readonly List<ProductsCategory> productsCategories;
+        private List<ProductsCategory> productsCategories;
+        private List<Product> products;
     
         private Market()
         {
         }
 
-        public Market(string name, List<ProductsCategory> initialCategories)
+        public Market(string name, List<ProductsCategory> initialCategories = null)
         {
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentException(nameof(name));
             }
-            if (initialCategories == null || initialCategories.Any(category => category == null))
-            {
-                throw new ArgumentException(nameof(initialCategories));
-            }
-            productsCategories = initialCategories;
+            productsCategories = initialCategories ?? new List<ProductsCategory>();
+
+            products = new List<Product>();
         }
-        
-        public Guid Id { get; private set; }
         
         public string Name { get; private set; }
 
         public IEnumerable<ProductsCategory> ProductsCategories => productsCategories.AsEnumerable();
+
+        public IEnumerable<Product> Products => products.AsEnumerable();
     }
 }

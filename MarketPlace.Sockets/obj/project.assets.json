@@ -688,7 +688,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\zadykian\\.nuget\\packages\\": {}
+    "C:\\Users\\zadykian\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -699,6 +700,9 @@
       "packagesPath": "C:\\Users\\zadykian\\.nuget\\packages\\",
       "outputPath": "C:\\Repository\\DotNet\\MarketPlace\\MarketPlace.Sockets\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "C:\\Users\\zadykian\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],

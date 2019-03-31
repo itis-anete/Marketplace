@@ -6,13 +6,13 @@ namespace MarketPlace.Core
 {
     public class Order
     {
-        private readonly IList<Product> products;
+        private readonly List<Product> products;
         
         private Order()
         {
         }
 
-        public Order(Customer customer, List<Product> products, DateTime orderDateTime)
+        public Order(Customer customer, IEnumerable<Product> products, DateTime orderDateTime, Address deliveryAddress)
         {
             Id = Guid.NewGuid();
             
@@ -22,35 +22,23 @@ namespace MarketPlace.Core
             {
                 throw new ArgumentException(nameof(products));
             }
-            this.products = products;
+            this.products = products.ToList();
             
             OrderDateTime = orderDateTime;
+
+            DeliveryAddress = deliveryAddress;
         }
         
         public Guid Id { get; private set; }
         
         public Customer Customer { get; private set; }
+        
+        public Address DeliveryAddress { get; private set; }
+
+        public bool WillBePickedUpByCustomer => DeliveryAddress == null;
 
         public IEnumerable<Product> Products => products.AsEnumerable();
         
         public DateTime OrderDateTime { get; private set; }
-
-        public void AddProduct(Product product)
-        {
-            if (product == null)
-            {
-                throw new ArgumentNullException(nameof(product));
-            }
-            products.Add(product);
-        }
-
-        public void RemoveProduct(Product product)
-        {
-            if (product == null)
-            {
-                throw new ArgumentNullException(nameof(product));
-            }
-            products.Remove(product);
-        }
     }
 }

@@ -1,55 +1,36 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using MarketPlace.Infrastructure;
 
 namespace MarketPlace.Core
 {
-    public class Product : IEquatable<Product>
+    public class Product //: IEquatable<Product>
     {
+        private List<ProductsCategory> associatedCategories;
+        
         private Product()
         {
         }
 
-        public Product(string name)
+        public Product(string name, string description, IEnumerable<ProductsCategory> associatedCategories)
         {
             Id = Guid.NewGuid();
-            if (string.IsNullOrEmpty(name))
-            {
-                throw new ArgumentException(nameof(name));
-            }
-            Name = name;
+            
+            Name = name.CheckValue();
+            
+            Description = description.CheckValue();
+
+            this.associatedCategories = associatedCategories?.ToList()
+                ?? throw new ArgumentNullException(nameof(associatedCategories));
         }
         
         public Guid Id { get; private set; }
         
         public string Name { get; private set; }
         
-        public byte[] Image { get; private set; }
+        public string Description { get; private set; }
 
-        #region Comparison
-        public bool Equals(Product other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return Id.Equals(other.Id) && string.Equals(Name, other.Name) && Equals(Image, other.Image);
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((Product) obj);
-        }
-
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                var hashCode = Id.GetHashCode();
-                hashCode = (hashCode * 397) ^ (Name != null ? Name.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (Image != null ? Image.GetHashCode() : 0);
-                return hashCode;
-            }
-        }
-        #endregion
+        public IEnumerable<ProductsCategory> AssociatedCategories => associatedCategories;
     }
 }
