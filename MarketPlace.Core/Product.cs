@@ -28,7 +28,24 @@ namespace MarketPlace.Core
         public List<Properties> Properties { get; private set; }
 
         public Point Ball { get; private set; }
-        B
+        /// <summary>
+        /// Добавляет товару новое свойство
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
+        public void AddProperties(string name, string value)
+        {
+            Properties.Add(new Core.Properties(name, value));
+        }
+        /// <summary>
+        /// Добавляет балл(оценку) для товара
+        /// </summary>
+        /// <param name="point"></param>
+        public void AddPoint(int point)
+        {
+            Ball.AddPoint(point);
+        }
+
         #region Comparison
         public bool Equals(Product other)
         {

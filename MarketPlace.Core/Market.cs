@@ -29,6 +29,16 @@ namespace MarketPlace.Core
         
         public string Name { get; private set; }
 
+        public Point Ball { get; private set; }
+
+        /// <summary>
+        /// Добавляет балл(оценку) магазину
+        /// </summary>
+        /// <param name="point"></param>
+        public void AddPoint(int point)
+        {
+            Ball.AddPoint(point);
+        }
         public IEnumerable<ProductsCategory> ProductsCategories => productsCategories.AsEnumerable();
     }
 }
