@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("MarketPlace.Sockets")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("MarketPlace.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("MarketPlace.Sockets")]
-[assembly: System.Reflection.AssemblyTitleAttribute("MarketPlace.Sockets")]
+[assembly: System.Reflection.AssemblyProductAttribute("MarketPlace.Infrastructure")]
+[assembly: System.Reflection.AssemblyTitleAttribute("MarketPlace.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Создано классом WriteCodeFragment MSBuild.

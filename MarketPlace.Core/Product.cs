@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace MarketPlace.Core
 {
@@ -23,6 +24,8 @@ namespace MarketPlace.Core
         public string Name { get; private set; }
         
         public byte[] Image { get; private set; }
+        //свойства товара
+        public List<Properties> Properties { get; private set; }
 
         #region Comparison
         public bool Equals(Product other)

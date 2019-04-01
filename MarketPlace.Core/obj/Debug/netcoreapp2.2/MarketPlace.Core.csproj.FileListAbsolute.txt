@@ -1,0 +1,9 @@
+D:\C#\Marketplace\MarketPlace.Core\bin\Debug\netcoreapp2.2\MarketPlace.Core.deps.json
+D:\C#\Marketplace\MarketPlace.Core\bin\Debug\netcoreapp2.2\MarketPlace.Core.dll
+D:\C#\Marketplace\MarketPlace.Core\bin\Debug\netcoreapp2.2\MarketPlace.Core.pdb
+D:\C#\Marketplace\MarketPlace.Core\obj\Debug\netcoreapp2.2\MarketPlace.Core.csprojAssemblyReference.cache
+D:\C#\Marketplace\MarketPlace.Core\obj\Debug\netcoreapp2.2\MarketPlace.Core.csproj.CoreCompileInputs.cache
+D:\C#\Marketplace\MarketPlace.Core\obj\Debug\netcoreapp2.2\MarketPlace.Core.AssemblyInfoInputs.cache
+D:\C#\Marketplace\MarketPlace.Core\obj\Debug\netcoreapp2.2\MarketPlace.Core.AssemblyInfo.cs
+D:\C#\Marketplace\MarketPlace.Core\obj\Debug\netcoreapp2.2\MarketPlace.Core.dll
+D:\C#\Marketplace\MarketPlace.Core\obj\Debug\netcoreapp2.2\MarketPlace.Core.pdb
