@@ -27,6 +27,8 @@ namespace MarketPlace.Core
         //свойства товара
         public List<Properties> Properties { get; private set; }
 
+        public Point Ball { get; private set; }
+        B
         #region Comparison
         public bool Equals(Product other)
         {
