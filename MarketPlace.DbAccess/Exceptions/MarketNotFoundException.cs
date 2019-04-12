@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace MarketPlace.Infrastructure
+namespace MarketPlace.DbAccess
 {
     [Serializable]
     public class MarketNotFoundException : Exception

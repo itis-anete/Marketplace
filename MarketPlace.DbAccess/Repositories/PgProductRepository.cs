@@ -4,7 +4,7 @@ using MarketPlace.Core;
 
 namespace MarketPlace.DbAccess
 {
-    public class PgProductRepository : IProductRepository
+    internal class PgProductRepository : IProductRepository
     {
         private readonly ApplicationContext applicationContext;
 
@@ -29,6 +29,7 @@ namespace MarketPlace.DbAccess
         public void AddProduct(Product newProduct)
         {
             applicationContext.Products.Add(newProduct);
+            applicationContext.SaveChanges();
         }
     }
 }
