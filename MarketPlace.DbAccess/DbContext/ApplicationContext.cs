@@ -20,7 +20,9 @@ namespace MarketPlace.DbAccess
         
         public DbSet<Market> Markets { get; private set; }
         
-        public DbSet<ProductsCategory> ProductsCategories { get; private set; }
+        public DbSet<ProductInfo> ProductInfos { get; private set; }
+        
+        public DbSet<ProductCategory> ProductsCategories { get; private set; }
         
         public DbSet<Product> Products { get; private set; }
         

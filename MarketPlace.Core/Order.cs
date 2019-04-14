@@ -18,11 +18,7 @@ namespace MarketPlace.Core
             
             Customer = customer ?? throw new ArgumentNullException(nameof(customer));
 
-            if (products == null || products.Any(product => product == null))
-            {
-                throw new ArgumentException(nameof(products));
-            }
-            this.products = products.ToList();
+            this.products = products?.ToList() ?? throw new ArgumentNullException(nameof(products));
             
             OrderDateTime = orderDateTime;
 

@@ -5,15 +5,15 @@ using MarketPlace.Infrastructure;
 
 namespace MarketPlace.Core
 {
-    public class Product //: IEquatable<Product>
+    public class Product : ICounterpart<Product>
     {
-        private List<ProductsCategory> associatedCategories;
+        private List<ProductCategory> associatedCategories;
         
         private Product()
         {
         }
 
-        public Product(string name, string description, IEnumerable<ProductsCategory> associatedCategories)
+        public Product(string name, string description, IEnumerable<ProductCategory> associatedCategories)
         {
             Id = Guid.NewGuid();
             
@@ -31,6 +31,13 @@ namespace MarketPlace.Core
         
         public string Description { get; private set; }
 
-        public IEnumerable<ProductsCategory> AssociatedCategories => associatedCategories;
+        public IEnumerable<ProductCategory> AssociatedCategories => associatedCategories;
+
+        double ICounterpart<Product>.GetSimilarityCoefficient(Product other)
+        {
+            return string.Equals(Name, other.Name, StringComparison.InvariantCultureIgnoreCase)
+                ? 1.0
+                : 0.0;
+        }
     }
 }

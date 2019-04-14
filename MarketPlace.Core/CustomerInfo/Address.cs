@@ -8,6 +8,8 @@ namespace MarketPlace.Core
         private Address(string index, string country, string city, 
             string street, string building, string apartment)
         {
+            Id = Guid.NewGuid();
+            
             Index = index.CheckValue();
             Country = country.CheckValue();
             City = city.CheckValue();
@@ -15,6 +17,8 @@ namespace MarketPlace.Core
             Building = building.CheckValue();
             Apartment = apartment.CheckValue();
         }
+        
+        public Guid Id { get; private set; }
         
         public string Index { get; private set; }
         

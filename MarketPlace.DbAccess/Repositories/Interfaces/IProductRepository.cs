@@ -5,8 +5,10 @@ namespace MarketPlace.DbAccess
 {
     public interface IProductRepository
     {
-        IEnumerable<Product> GetAllMarketProducts(string marketName);
+        IEnumerable<ProductInfo> GetAllMarketProductInfos(string marketName);
 
-        void AddProduct(Product newProduct);
+        void AddProductInfo(ProductInfo newProductInfo);
+
+        IEnumerable<ProductInfo> GetSameProducts(Product product);
     }
 }

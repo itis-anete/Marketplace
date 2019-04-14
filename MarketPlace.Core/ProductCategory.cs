@@ -3,13 +3,13 @@ using MarketPlace.Infrastructure;
 
 namespace MarketPlace.Core
 {
-    public class ProductsCategory
+    public class ProductCategory
     {
-        private ProductsCategory()
+        private ProductCategory()
         {
         }
 
-        public ProductsCategory(string categoryName)
+        public ProductCategory(string categoryName)
         {
             Id = Guid.NewGuid();
             
