@@ -18,7 +18,7 @@ namespace MarketPlace.DbAccess
             var newOrder = new Order(
                 cart.Customer, 
                 products, 
-                cart.TotalInUsDollarsWithDiscounts, 
+                cart.TotalInUsDollarsWithDiscounts,
                 deliveryAddress);
 
             applicationContext.Orders.Add(newOrder);
