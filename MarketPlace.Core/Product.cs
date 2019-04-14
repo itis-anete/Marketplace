@@ -35,6 +35,7 @@ namespace MarketPlace.Core
 
         double ICounterpart<Product>.GetSimilarityCoefficient(Product other)
         {
+            // TODO: Сравнение по категориям и т.д.
             return string.Equals(Name, other.Name, StringComparison.InvariantCultureIgnoreCase)
                 ? 1.0
                 : 0.0;

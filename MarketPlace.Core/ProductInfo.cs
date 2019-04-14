@@ -25,8 +25,10 @@ namespace MarketPlace.Core
         
         public Product Product { get; private set; }
         
-        public double PriceInUsDollars { get; private set; }
+        public double PriceInUsDollars { get; set; }
         
-        public uint Quantity { get; private set; }
+        public byte RatingInStars { get; set; }
+        
+        public uint Quantity { get; set; }
     }
 }

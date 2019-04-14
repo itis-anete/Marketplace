@@ -5,5 +5,7 @@ namespace MarketPlace.DbAccess
         IMarketRepository MarketRepository { get; }
         
         IProductRepository ProductRepository { get; }
+        
+        IOrderRepository OrderRepository { get; }
     }
 }

@@ -5,13 +5,11 @@ using MarketPlace.Core;
 
 namespace MarketPlace.DbAccess
 {
-    internal class PgProductRepository : IProductRepository
+    internal class PgProductRepository : PgRepositoryBase, IProductRepository
     {
-        private readonly ApplicationContext applicationContext;
-
         public PgProductRepository(ApplicationContext applicationContext)
+            : base(applicationContext)
         {
-            this.applicationContext = applicationContext;
         }
 
         public IEnumerable<ProductInfo> GetAllMarketProductInfos(string marketName)

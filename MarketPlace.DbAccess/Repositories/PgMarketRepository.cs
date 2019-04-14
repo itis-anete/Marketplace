@@ -4,14 +4,11 @@ using MarketPlace.Core;
 
 namespace MarketPlace.DbAccess
 {
-    internal class PgMarketRepository : IMarketRepository
+    internal class PgMarketRepository : PgRepositoryBase, IMarketRepository
     {
-        private readonly ApplicationContext applicationContext;
-
-        internal PgMarketRepository(ApplicationContext applicationContext)
+        public PgMarketRepository(ApplicationContext applicationContext)
+            : base(applicationContext)
         {
-            this.applicationContext = applicationContext
-                ?? throw new ArgumentNullException(nameof(applicationContext));
         }
         
         public IEnumerable<Market> GetAllMarkets()
