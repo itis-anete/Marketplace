@@ -7,10 +7,6 @@ namespace MarketPlace.Core
     //клас свойства для товара например:name=вес value=4,7 кг
     public class Properties
     {
-        public Properties()
-        {
-
-        }
         public Properties(string name,string value)
         {
             Id = Guid.NewGuid();

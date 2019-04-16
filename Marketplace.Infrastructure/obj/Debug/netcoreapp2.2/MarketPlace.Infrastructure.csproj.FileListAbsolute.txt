@@ -1,6 +1,4 @@
 D:\C#\Marketplace\MarketPlace.Infrastructure\bin\Debug\netcoreapp2.2\MarketPlace.Infrastructure.deps.json
-D:\C#\Marketplace\MarketPlace.Infrastructure\bin\Debug\netcoreapp2.2\MarketPlace.Infrastructure.runtimeconfig.json
-D:\C#\Marketplace\MarketPlace.Infrastructure\bin\Debug\netcoreapp2.2\MarketPlace.Infrastructure.runtimeconfig.dev.json
 D:\C#\Marketplace\MarketPlace.Infrastructure\bin\Debug\netcoreapp2.2\MarketPlace.Infrastructure.dll
 D:\C#\Marketplace\MarketPlace.Infrastructure\bin\Debug\netcoreapp2.2\MarketPlace.Infrastructure.pdb
 D:\C#\Marketplace\MarketPlace.Infrastructure\obj\Debug\netcoreapp2.2\MarketPlace.Infrastructure.csprojAssemblyReference.cache
