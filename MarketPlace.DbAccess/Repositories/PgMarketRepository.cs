@@ -4,19 +4,22 @@ using MarketPlace.Core;
 
 namespace MarketPlace.DbAccess
 {
-    public class PgMarketRepository : IMarketRepository
+    internal class PgMarketRepository : PgRepositoryBase, IMarketRepository
     {
-        private readonly ApplicationContext applicationContext;
-
         public PgMarketRepository(ApplicationContext applicationContext)
+            : base(applicationContext)
         {
-            this.applicationContext = applicationContext
-                ?? throw new ArgumentNullException(nameof(applicationContext));
         }
         
         public IEnumerable<Market> GetAllMarkets()
         {
             return applicationContext.Markets;
+        }
+
+        public void AddMarket(Market newMarket)
+        {
+            applicationContext.Markets.Add(newMarket);
+            applicationContext.SaveChanges();
         }
     }
 }

@@ -1,33 +1,32 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using MarketPlace.Infrastructure;
 
 namespace MarketPlace.Core
 {
     public class Market
     {
-        private List<ProductsCategory> productsCategories;
-        private List<Product> products;
+        private List<ProductCategory> productsCategories;
+        private List<ProductInfo> productInfos;
     
         private Market()
         {
         }
 
-        public Market(string name, List<ProductsCategory> initialCategories = null)
+        public Market(string name, List<ProductCategory> initialCategories = null)
         {
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentException(nameof(name));
-            }
-            productsCategories = initialCategories ?? new List<ProductsCategory>();
+            Name = name.CheckValue();
+            
+            productsCategories = initialCategories ?? new List<ProductCategory>();
 
-            products = new List<Product>();
+            productInfos = new List<ProductInfo>();
         }
         
         public string Name { get; private set; }
 
-        public IEnumerable<ProductsCategory> ProductsCategories => productsCategories.AsEnumerable();
+        public IEnumerable<ProductCategory> ProductsCategories => productsCategories.AsEnumerable();
 
-        public IEnumerable<Product> Products => products.AsEnumerable();
+        public IEnumerable<ProductInfo> ProductInfos => productInfos.AsEnumerable();
     }
 }
