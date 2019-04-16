@@ -6,25 +6,26 @@ namespace MarketPlace.Core
 {
     public class Order
     {
-        private readonly IList<Product> products;
+        private readonly List<Product> products;
         
         private Order()
         {
         }
 
-        public Order(Customer customer, List<Product> products, DateTime orderDateTime)
+        public Order(Customer customer, IEnumerable<Product> products, double totalInUsDollars, 
+            Address deliveryAddress = null, DateTimeOffset? orderDateTime = null)
         {
             Id = Guid.NewGuid();
             
             Customer = customer ?? throw new ArgumentNullException(nameof(customer));
 
-            if (products == null || products.Any(product => product == null))
-            {
-                throw new ArgumentException(nameof(products));
-            }
-            this.products = products;
+            this.products = products?.ToList() ?? throw new ArgumentNullException(nameof(products));
+
+            TotalInUsDollars = totalInUsDollars;
             
-            OrderDateTime = orderDateTime;
+            DeliveryAddress = deliveryAddress;
+            
+            OrderDateTime = orderDateTime ?? DateTimeOffset.Now;
         }
         
         public Guid Id { get; private set; }
@@ -33,24 +34,11 @@ namespace MarketPlace.Core
 
         public IEnumerable<Product> Products => products.AsEnumerable();
         
-        public DateTime OrderDateTime { get; private set; }
-
-        public void AddProduct(Product product)
-        {
-            if (product == null)
-            {
-                throw new ArgumentNullException(nameof(product));
-            }
-            products.Add(product);
-        }
-
-        public void RemoveProduct(Product product)
-        {
-            if (product == null)
-            {
-                throw new ArgumentNullException(nameof(product));
-            }
-            products.Remove(product);
-        }
+        public double TotalInUsDollars { get; private set; }
+        
+        public Address DeliveryAddress { get; private set; }
+        
+        public bool WillBePickedUpByCustomer => DeliveryAddress == null;
+        public DateTimeOffset OrderDateTime { get; private set; }
     }
 }

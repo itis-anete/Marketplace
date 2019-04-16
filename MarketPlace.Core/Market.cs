@@ -1,44 +1,32 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using MarketPlace.Infrastructure;
 
 namespace MarketPlace.Core
 {
     public class Market
     {
-        private readonly List<ProductsCategory> productsCategories;
+        private List<ProductCategory> productsCategories;
+        private List<ProductInfo> productInfos;
     
         private Market()
         {
         }
 
-        public Market(string name, List<ProductsCategory> initialCategories)
+        public Market(string name, List<ProductCategory> initialCategories = null)
         {
-            if (string.IsNullOrEmpty(name))
-            {
-                throw new ArgumentException(nameof(name));
-            }
-            if (initialCategories == null || initialCategories.Any(category => category == null))
-            {
-                throw new ArgumentException(nameof(initialCategories));
-            }
-            productsCategories = initialCategories;
+            Name = name.CheckValue();
+            
+            productsCategories = initialCategories ?? new List<ProductCategory>();
+
+            productInfos = new List<ProductInfo>();
         }
-        
-        public Guid Id { get; private set; }
         
         public string Name { get; private set; }
 
-        public Point Ball { get; private set; }
+        public IEnumerable<ProductCategory> ProductsCategories => productsCategories.AsEnumerable();
 
-        /// <summary>
-        /// Добавляет балл(оценку) магазину
-        /// </summary>
-        /// <param name="point"></param>
-        public void AddPoint(int point)
-        {
-            Ball.AddPoint(point);
-        }
-        public IEnumerable<ProductsCategory> ProductsCategories => productsCategories.AsEnumerable();
+        public IEnumerable<ProductInfo> ProductInfos => productInfos.AsEnumerable();
     }
 }

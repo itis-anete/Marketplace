@@ -1,77 +1,44 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using MarketPlace.Infrastructure;
 
 namespace MarketPlace.Core
 {
-    public class Product : IEquatable<Product>
+    public class Product : ICounterpart<Product>
     {
+        private List<ProductCategory> associatedCategories;
+        
         private Product()
         {
         }
 
-        public Product(string name)
+        public Product(string name, string description, IEnumerable<ProductCategory> associatedCategories)
         {
             Id = Guid.NewGuid();
-            if (string.IsNullOrEmpty(name))
-            {
-                throw new ArgumentException(nameof(name));
-            }
-            Name = name;
+            
+            Name = name.CheckValue();
+            
+            Description = description.CheckValue();
+
+            this.associatedCategories = associatedCategories?.ToList()
+                ?? throw new ArgumentNullException(nameof(associatedCategories));
         }
         
         public Guid Id { get; private set; }
         
         public string Name { get; private set; }
         
-        public byte[] Image { get; private set; }
-        //свойства товара
-        public List<Properties> Properties { get; private set; }
+        public string Description { get; private set; }
 
-        public Point Ball { get; private set; }
-        /// <summary>
-        /// Добавляет товару новое свойство
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="value"></param>
-        public void AddProperties(string name, string value)
-        {
-            Properties.Add(new Core.Properties(name, value));
-        }
-        /// <summary>
-        /// Добавляет балл(оценку) для товара
-        /// </summary>
-        /// <param name="point"></param>
-        public void AddPoint(int point)
-        {
-            Ball.AddPoint(point);
-        }
+        public IEnumerable<ProductCategory> AssociatedCategories => associatedCategories;
 
-        #region Comparison
-        public bool Equals(Product other)
+        double ICounterpart<Product>.GetSimilarityCoefficient(Product other)
         {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return Id.Equals(other.Id) && string.Equals(Name, other.Name) && Equals(Image, other.Image);
+            // TODO: РЎСЂР°РІРЅРµРЅРёРµ РїРѕ РєР°С‚РµРіРѕСЂРёСЏРј Рё С‚.Рґ.
+            return string.Equals(Name, other.Name, StringComparison.InvariantCultureIgnoreCase)
+                ? 1.0
+                : 0.0;
         }
-
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((Product) obj);
-        }
-
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                var hashCode = Id.GetHashCode();
-                hashCode = (hashCode * 397) ^ (Name != null ? Name.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (Image != null ? Image.GetHashCode() : 0);
-                return hashCode;
-            }
-        }
-        #endregion
     }
 }
