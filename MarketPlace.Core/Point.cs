@@ -9,7 +9,7 @@ namespace MarketPlace.Core
     {
         public Guid Id { get; private set; }
         /// <summary>
-        /// срю значение 
+        /// среднее значение 
         /// </summary>
         public int Average { get; private set; }
         /// <summary>
