@@ -14,9 +14,15 @@ namespace MarketPlace.Core
         /// <summary>
         /// Сколько процентов скидка
         /// </summary>
-        public int Percent { get; private set; }
+        public double Percent { get { return Percent; }
+            set
+            {
+                if (value > 100) { Percent = 100; }
+                else if (value < 0) { Percent = 0; }
+                else { Percent = value; }
+            } }
         /// <summary>
-        /// Суммируется скидка 
+        /// Суммируется ли скидка 
         /// </summary>
         public bool Summed { get; private set; }//некоторые скидки не суммируется
     }
