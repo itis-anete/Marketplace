@@ -8,7 +8,5 @@ namespace MarketPlace.DbAccess
         IEnumerable<ProductInfo> GetAllMarketProductInfos(string marketName);
 
         void AddProductInfo(ProductInfo newProductInfo);
-
-        IEnumerable<ProductInfo> GetSameProducts(Product product);
     }
 }

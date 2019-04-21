@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -29,6 +29,7 @@
     <ProjectReference Include="..\MarketPlace.Core\MarketPlace.Core.csproj" />
     <ProjectReference Include="..\MarketPlace.DbAccess\MarketPlace.DbAccess.csproj" />
     <ProjectReference Include="..\MarketPlace.Infrastructure\MarketPlace.Infrastructure.csproj" />
+    <ProjectReference Include="..\MarketPlace.ProductDomain\MarketPlace.ProductDomain.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

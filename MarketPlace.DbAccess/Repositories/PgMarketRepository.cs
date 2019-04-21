@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using MarketPlace.Core;
 
 namespace MarketPlace.DbAccess
@@ -20,6 +21,25 @@ namespace MarketPlace.DbAccess
         {
             applicationContext.Markets.Add(newMarket);
             applicationContext.SaveChanges();
+        }
+
+        public Market GetMarketByName(string marketName)
+        {
+            return applicationContext.Markets
+                .FirstOrDefault(market =>
+                    string.Equals(market.Name, marketName, StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        public IEnumerable<Market> GetMarketsByCategory(string categoryName)
+        {
+            bool IsMarketContainsRequiredCategory(Market market)
+            {
+                return market.ProductsCategories.Any(category =>
+                    string.Equals(category.Name, categoryName, StringComparison.InvariantCultureIgnoreCase));
+            }
+            
+            return applicationContext.Markets
+                .Where(IsMarketContainsRequiredCategory);
         }
     }
 }

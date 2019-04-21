@@ -8,5 +8,9 @@ namespace MarketPlace.DbAccess
         IEnumerable<Market> GetAllMarkets();
 
         void AddMarket(Market newMarket);
+
+        Market GetMarketByName(string marketName);
+
+        IEnumerable<Market> GetMarketsByCategory(string categoryName);
     }
 }

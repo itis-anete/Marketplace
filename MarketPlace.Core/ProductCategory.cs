@@ -13,19 +13,19 @@ namespace MarketPlace.Core
         {
             Id = Guid.NewGuid();
             
-            CategoryName = categoryName.CheckValue();
+            Name = categoryName.CheckValue();
         }
          
         public Guid Id { get; private set; }
         
-        public string CategoryName { get; private set; }
+        public string Name { get; private set; }
 
         #region Comparison
         public bool Equals(ProductCategory other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return string.Equals(CategoryName, other.CategoryName, StringComparison.InvariantCultureIgnoreCase);
+            return string.Equals(Name, other.Name, StringComparison.InvariantCultureIgnoreCase);
         }
 
         public override bool Equals(object obj)
@@ -38,7 +38,7 @@ namespace MarketPlace.Core
 
         public override int GetHashCode()
         {
-            return StringComparer.InvariantCultureIgnoreCase.GetHashCode(CategoryName);
+            return StringComparer.InvariantCultureIgnoreCase.GetHashCode(Name);
         }
         #endregion
     }

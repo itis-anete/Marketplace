@@ -31,17 +31,5 @@ namespace MarketPlace.DbAccess
             applicationContext.ProductInfos.Add(newProductInfo);
             applicationContext.SaveChanges();
         }
-
-        public IEnumerable<ProductInfo> GetSameProducts(Product product)
-        {
-            bool ProductInfoPredicate(ProductInfo productInfo)
-            {
-                var counterpartProduct = productInfo.Product as ICounterpart<Product>;
-                return counterpartProduct.GetSimilarityCoefficient(product) >= 0.5;
-            }
-            
-            return applicationContext.ProductInfos
-                .Where(ProductInfoPredicate);
-        }
     }
 }
