@@ -36,9 +36,7 @@ namespace MarketPlace.DbAccess
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder
-                .Entity<Market>()
-                .HasKey(market => market.Name);
+            
         }
     }
 }

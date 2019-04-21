@@ -16,6 +16,8 @@ namespace MarketPlace.Core
 
         public Market(string name, List<ProductCategory> initialCategories = null)
         {
+            Id = Guid.NewGuid();
+            
             Name = name.CheckValue();
             
             productsCategories = initialCategories ?? new List<ProductCategory>();
@@ -23,7 +25,9 @@ namespace MarketPlace.Core
             productInfos = new List<ProductInfo>();
         }
         
-        public string Name { get; private set; }
+        public Guid Id { get; private set; }
+        
+        public string Name { get; set; }
 
         public IEnumerable<ProductCategory> ProductsCategories => productsCategories.AsEnumerable();
 

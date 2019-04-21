@@ -1,0 +1,11 @@
+<ul class="create">
+  <li [routerLinkActive]='["link-active"]'>
+    <p [routerLink]='["/market"]'>Back<<==</p>
+  </li>
+</ul>
+<input #box (keyup.enter)="postData(box.value)" />
+<ul class="create" *ngIf="complete">
+  <li (click)="redirect(market)">
+    {{ market }}
+  </li>
+</ul>

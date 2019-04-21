@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using MarketPlace.Infrastructure;
@@ -19,7 +20,7 @@ namespace MarketPlace.DbAccess
 
             if (marketToGetProductsFrom == null)
             {
-                throw new MarketNotFoundException(marketName);
+                throw new ArgumentException($"Market '{marketName}' is not found.");
             }
 
             return marketToGetProductsFrom.ProductInfos;

@@ -1,0 +1,88 @@
+<ul class="prods">
+  <li [routerLinkActive]='["link-active"]'>
+    <p [routerLink]='["/market"]'>Back<<==</p>
+  </li>
+</ul>
+<p *ngIf="!market"><em>Loading...</em></p>
+<table>
+  <thead>
+    <tr>
+      <th>
+        <table>
+          <thead>
+            <tr>
+              <th width="135px">
+                <button class="btn btn-danger" *ngIf="page > 0" (click)="getPage(page - 1, market.name)">Previous<<==</button>
+              </th>
+              <th>
+                <button class="btn btn-success" *ngIf="market.maxPage > page" (click)="getPage(page + 1, market.name)">==>>Next</button>
+              </th>
+            </tr>
+          </thead>
+        </table>
+      </th>
+      <th>
+        <h2>{{market.name}}</h2>
+      </th>
+      <th>
+        <h2 *ngIf="selectedProduct">Same Products</h2>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="px">
+        <ul class="prods" *ngIf="market">
+          <li *ngFor="let product of market.products"
+              [class.selected]="isSelectedProduct(product)"
+              (click)="productOnClick(product)">
+            {{ product.name }}
+          </li>
+        </ul>
+      </td>
+      <td width="500">
+        <table *ngIf="selectedProduct">
+          <thead>
+            <tr>
+              <th><h2> {{selectedProduct.name}} </h2></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div>Description: {{ selectedProduct.description }}</div>
+                <div>Cost: {{ selectedProduct.cost }}</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <table *ngIf="selectedSameProduct">
+          <thead>
+            <tr>
+              <th><h1>{{ selectedSameProduct.product.name }}</h1></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div>Description: {{ selectedSameProduct.product.description }}</div>
+                <div>Cost: {{ selectedSameProduct.product.cost }}</div>
+                <button class="btn btn-success" (click)="goToMarket(selectedSameProduct.marketName)">{{ selectedSameProduct.marketName }}</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+      <td>
+        <ul class="prods" *ngIf="selectedProduct">
+          <li *ngFor="let product of sameProducts"
+              [class.selected]="product === selectedSameProduct"
+              (click)="sameProductOnClick(product)">
+              {{ product.marketName }}   {{ product.product.cost }}
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
