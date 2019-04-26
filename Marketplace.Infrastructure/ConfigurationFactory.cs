@@ -1,7 +1,7 @@
 using System.IO;
 using Microsoft.Extensions.Configuration;
 
-namespace MarketPlace.Infrastructure
+namespace Marketplace.Infrastructure
 {
     public static class ConfigurationFactory
     {
@@ -9,7 +9,7 @@ namespace MarketPlace.Infrastructure
         {
             return new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
+                .AddJsonFile("appsettings.json", false, true)
                 .Build();
         }
     }

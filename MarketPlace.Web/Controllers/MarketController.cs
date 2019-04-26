@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using MarketPlace.Core;
-using MarketPlace.DbAccess;
+using Marketplace.Core;
+using Marketplace.DbAccess;
 
-namespace MarketPlace.Web.Controllers
+namespace Marketplace.Web.Controllers
 {
     public class MarketController : Controller
     {
@@ -41,6 +41,7 @@ namespace MarketPlace.Web.Controllers
             return BadRequest();
         }
 
+        [HttpGet]
         public IActionResult GetMarketsByCategory(string categoryName)
         {
             var markets = unitOfWork.MarketRepository.GetMarketsByCategory(categoryName);

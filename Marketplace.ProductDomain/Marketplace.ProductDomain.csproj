@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
+        <RootNamespace>Marketplace.ProductDomain</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Marketplace.Core\Marketplace.Core.csproj" />
+      <ProjectReference Include="..\Marketplace.DbAccess\Marketplace.DbAccess.csproj" />
+    </ItemGroup>
+
+</Project>

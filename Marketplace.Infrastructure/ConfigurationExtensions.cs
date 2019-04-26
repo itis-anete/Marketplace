@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Configuration;
 
-namespace MarketPlace.Infrastructure
+namespace Marketplace.Infrastructure
 {
     public static class ConfigurationExtensions
     {

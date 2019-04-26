@@ -1,6 +1,6 @@
 using System;
 
-namespace MarketPlace.Infrastructure
+namespace Marketplace.Infrastructure
 {
     public static class StringExtensions
     {

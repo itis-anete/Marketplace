@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace MarketPlace.Infrastructure
+namespace Marketplace.Infrastructure
 {
     [Serializable]
     public class ConfigurationException : ApplicationException

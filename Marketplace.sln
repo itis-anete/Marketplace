@@ -1,16 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketPlace.Core", "MarketPlace.Core\MarketPlace.Core.csproj", "{19A1B328-E609-4760-B41D-AEF59F83A2B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.Core", "Marketplace.Core\Marketplace.Core.csproj", "{19A1B328-E609-4760-B41D-AEF59F83A2B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketPlace.DbAccess", "MarketPlace.DbAccess\MarketPlace.DbAccess.csproj", "{3BEA12C9-EB7A-47BB-83C6-AA6718DC514A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.DbAccess", "Marketplace.DbAccess\Marketplace.DbAccess.csproj", "{3BEA12C9-EB7A-47BB-83C6-AA6718DC514A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketPlace.Sockets", "MarketPlace.Sockets\MarketPlace.Sockets.csproj", "{66F1B3BB-48A1-452F-B39B-FF8448F1FFBB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.Sockets", "Marketplace.Sockets\Marketplace.Sockets.csproj", "{66F1B3BB-48A1-452F-B39B-FF8448F1FFBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketPlace.Infrastructure", "MarketPlace.Infrastructure\MarketPlace.Infrastructure.csproj", "{4F610EC8-31E3-4E95-A4B4-3122898448CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.Infrastructure", "Marketplace.Infrastructure\Marketplace.Infrastructure.csproj", "{4F610EC8-31E3-4E95-A4B4-3122898448CD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.Web", "MarketPlace.Web\Marketplace.Web.csproj", "{115C5D1A-FA96-4E01-B746-2A8368013F65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketPlace.ProductDomain", "MarketPlace.ProductDomain\MarketPlace.ProductDomain.csproj", "{C4358545-E0BA-4CEB-9288-5119E1CBDD4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.ProductDomain", "Marketplace.ProductDomain\Marketplace.ProductDomain.csproj", "{C4358545-E0BA-4CEB-9288-5119E1CBDD4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.DiscountDomain", "Marketplace.DiscountDomain\Marketplace.DiscountDomain.csproj", "{C398E723-E633-4DDA-9BEE-5BACC05583A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.CartDomain", "Marketplace.CartDomain\Marketplace.CartDomain.csproj", "{44F62213-15EB-4E72-8521-E85644E7DB04}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domains", "Domains", "{83A3E776-CB96-447A-A530-D2DD6D7C4394}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.AuctionDomain", "Marketplace.AuctionDomain\Marketplace.AuctionDomain.csproj", "{50068BB5-DD3F-42C3-AFD3-39BCEC266507}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,5 +50,23 @@ Global
 		{C4358545-E0BA-4CEB-9288-5119E1CBDD4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4358545-E0BA-4CEB-9288-5119E1CBDD4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4358545-E0BA-4CEB-9288-5119E1CBDD4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C398E723-E633-4DDA-9BEE-5BACC05583A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C398E723-E633-4DDA-9BEE-5BACC05583A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C398E723-E633-4DDA-9BEE-5BACC05583A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C398E723-E633-4DDA-9BEE-5BACC05583A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44F62213-15EB-4E72-8521-E85644E7DB04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44F62213-15EB-4E72-8521-E85644E7DB04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44F62213-15EB-4E72-8521-E85644E7DB04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44F62213-15EB-4E72-8521-E85644E7DB04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50068BB5-DD3F-42C3-AFD3-39BCEC266507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50068BB5-DD3F-42C3-AFD3-39BCEC266507}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50068BB5-DD3F-42C3-AFD3-39BCEC266507}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50068BB5-DD3F-42C3-AFD3-39BCEC266507}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{44F62213-15EB-4E72-8521-E85644E7DB04} = {83A3E776-CB96-447A-A530-D2DD6D7C4394}
+		{C398E723-E633-4DDA-9BEE-5BACC05583A2} = {83A3E776-CB96-447A-A530-D2DD6D7C4394}
+		{C4358545-E0BA-4CEB-9288-5119E1CBDD4B} = {83A3E776-CB96-447A-A530-D2DD6D7C4394}
+		{50068BB5-DD3F-42C3-AFD3-39BCEC266507} = {83A3E776-CB96-447A-A530-D2DD6D7C4394}
 	EndGlobalSection
 EndGlobal
