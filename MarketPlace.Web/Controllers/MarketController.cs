@@ -6,6 +6,7 @@ using Marketplace.DbAccess;
 
 namespace Marketplace.Web.Controllers
 {
+    [Route("[controller]/[action]")]
     public class MarketController : Controller
     {
         private readonly IUnitOfWork unitOfWork;
@@ -29,6 +30,13 @@ namespace Marketplace.Web.Controllers
         }
 
         [HttpGet]
+        public IActionResult UpdateMarket(Market updatedMarket)
+        {
+            unitOfWork.MarketRepository.UpdateMarket(updatedMarket);
+            return Ok();
+        }
+
+        [HttpGet]
         public IActionResult GetMarketByName(string marketName)
         {
             var foundMarket = unitOfWork.MarketRepository.GetMarketByName(marketName);
@@ -38,13 +46,13 @@ namespace Marketplace.Web.Controllers
                 return Ok(foundMarket);
             }
 
-            return BadRequest();
+            return NotFound();
         }
 
         [HttpGet]
-        public IActionResult GetMarketsByCategory(string categoryName)
+        public IActionResult GetMarketsByCategory(ProductCategory productCategory)
         {
-            var markets = unitOfWork.MarketRepository.GetMarketsByCategory(categoryName);
+            var markets = unitOfWork.MarketRepository.GetMarketsByCategory(productCategory);
 
             if (markets.Any())
             {

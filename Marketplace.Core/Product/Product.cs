@@ -7,7 +7,8 @@ using Marketplace.Infrastructure;
 namespace Marketplace.Core
 {
     public class Product
-    {private Product()
+    {
+        private Product()
         {
         }
 
@@ -26,7 +27,7 @@ namespace Marketplace.Core
             Discounts = new List<DiscountBase>();
         }
         
-        public Guid Id { get; private set; }
+        public Guid Id { get; set; }
       
         public string Name { get; set; }
         

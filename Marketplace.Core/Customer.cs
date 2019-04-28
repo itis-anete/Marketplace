@@ -16,18 +16,13 @@ namespace Marketplace.Core
             
             PasswordHash = passwordHash;
 
-            DateOfBirth = dateOfBirth;
-            
-            DeliveryAddresses = new List<Address>();
-        }
+            DateOfBirth = dateOfBirth;}
         
         public string Login { get; private set; }
         
         public int PasswordHash { get; private set; }
         
         public DateTimeOffset DateOfBirth { get; private set; }
-
-        public List<Address> DeliveryAddresses { get; private set; }
 
         #region Comparison
         public bool Equals(Customer other)

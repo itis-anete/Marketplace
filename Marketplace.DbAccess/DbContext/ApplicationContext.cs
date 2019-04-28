@@ -16,8 +16,6 @@ namespace Marketplace.DbAccess
         
         public DbSet<Customer> Customers { get; private set; }
         
-        public DbSet<Address> Addresses { get; private set; }
-        
         public DbSet<Market> Markets { get; private set; }
         
         public DbSet<ProductCategory> ProductsCategories { get; private set; }

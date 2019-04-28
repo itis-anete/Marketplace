@@ -11,13 +11,12 @@ namespace Marketplace.DbAccess
         {
         }
 
-        public void MakeOrder(Cart cart, Address deliveryAddress = null)
+        public void MakeOrder(Cart cart)
         {
             var newOrder = new Order(
                 cart.Customer, 
                 cart.Products, 
-                cart.TotalInUsDollarsWithoutDiscounts,
-                deliveryAddress);
+                cart.TotalInUsDollarsWithoutDiscounts);
 
             applicationContext.Orders.Add(newOrder);
             applicationContext.SaveChanges();

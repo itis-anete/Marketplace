@@ -12,8 +12,8 @@ namespace Marketplace.Core
         {
         }
 
-        public Order(Customer customer, IEnumerable<Product> products, double totalInUsDollars, 
-            Address deliveryAddress = null, DateTimeOffset? orderDateTime = null)
+        public Order(Customer customer, IEnumerable<Product> products, double totalInUsDollars,
+            DateTimeOffset? orderDateTime = null)
         {
             Id = Guid.NewGuid();
             
@@ -22,8 +22,6 @@ namespace Marketplace.Core
             this.products = products?.ToList() ?? throw new ArgumentNullException(nameof(products));
 
             TotalInUsDollars = totalInUsDollars;
-            
-            DeliveryAddress = deliveryAddress;
             
             OrderDateTime = orderDateTime ?? DateTimeOffset.Now;
         }
@@ -36,9 +34,6 @@ namespace Marketplace.Core
         
         public double TotalInUsDollars { get; private set; }
         
-        public Address DeliveryAddress { get; private set; }
-        
-        public bool WillBePickedUpByCustomer => DeliveryAddress == null;
         public DateTimeOffset OrderDateTime { get; private set; }
     }
 }

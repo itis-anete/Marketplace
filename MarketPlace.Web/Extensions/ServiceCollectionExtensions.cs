@@ -27,11 +27,11 @@ namespace Marketplace.Web.Extensions
                     Description = "Created by VT$4PP"
                 };
                 
-                swaggerGenOptions.SwaggerDoc("SwaggerDoc", info);
+                swaggerGenOptions.SwaggerDoc("1.0.0", info);
 
-                var basePath = ApplicationEnvironment.ApplicationBasePath;
-                var filePath = Path.Combine(basePath, "Marketplace.Web.xml");
-                swaggerGenOptions.IncludeXmlComments(filePath);
+//                var basePath = ApplicationEnvironment.ApplicationBasePath;
+//                var filePath = Path.Combine(basePath, "Marketplace.Web.xml");
+//                swaggerGenOptions.IncludeXmlComments(filePath);
             }
 
             return serviceCollection.AddSwaggerGen(SwaggerGenOptionsAction);

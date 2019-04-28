@@ -9,7 +9,7 @@ namespace Marketplace.DbAccess
 
         Market GetMarketByName(string marketName);
 
-        IEnumerable<Market> GetMarketsByCategory(string categoryName);
+        IEnumerable<Market> GetMarketsByCategory(ProductCategory productCategory);
         
         void AddMarket(Market newMarket);
 

@@ -24,20 +24,17 @@ namespace Marketplace.DbAccess
                     string.Equals(market.Name, marketName, StringComparison.InvariantCultureIgnoreCase));
         }
 
-        public IEnumerable<Market> GetMarketsByCategory(string categoryName)
+        public IEnumerable<Market> GetMarketsByCategory(ProductCategory productCategory)
         {
             bool IsMarketContainsRequiredCategory(Market market)
-            {
-                return market.ProductsCategories.Any(category =>
-                    string.Equals(category.Name, categoryName, StringComparison.InvariantCultureIgnoreCase));
-            }
+                => market.ProductsCategories.Any(category => category.Equals(productCategory));
             
             return applicationContext.Markets
                 .Where(IsMarketContainsRequiredCategory);
         }
         
         public void AddMarket(Market newMarket)
-        {
+        {            
             applicationContext.Markets.Add(newMarket);
             applicationContext.SaveChanges();
         }

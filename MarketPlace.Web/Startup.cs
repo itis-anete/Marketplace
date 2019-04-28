@@ -1,3 +1,4 @@
+using System;
 using Marketplace.Web.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -7,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Marketplace.Web
 {
-    public class Startup
+    internal class Startup
     {
         public void ConfigureServices(IServiceCollection services)
         {
@@ -38,8 +39,7 @@ namespace Marketplace.Web
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
-            app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseSwaggerWithEndpoint();
             
             app.UseMvc(routes =>
             {
@@ -48,15 +48,15 @@ namespace Marketplace.Web
                     template: "{controller}/{action=Index}/{page?}");
             });
 
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "ClientApp";
-
-                if (env.IsDevelopment())
-                {
-                    spa.UseAngularCliServer(npmScript: "start");
-                }
-            });
+//            app.UseSpa(spa =>
+//            {
+//                spa.Options.SourcePath = "ClientApp";
+//
+//                if (env.IsDevelopment())
+//                {
+//                    spa.UseAngularCliServer(npmScript: "start");
+//                }
+//            });
         }
     }
 }

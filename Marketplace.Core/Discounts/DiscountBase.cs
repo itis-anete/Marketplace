@@ -10,9 +10,11 @@ namespace Marketplace.Core.Discounts
 
         public DiscountBase(double percent)
         {
+            Id = Guid.NewGuid();
             Percent = percent;
         }
      
+        public Guid Id { get; private set; }
 
         private double percent;
         public double Percent

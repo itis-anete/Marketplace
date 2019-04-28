@@ -19,7 +19,7 @@ namespace Marketplace.DbAccess
             var marketToGetProductsFrom = applicationContext.Markets
                 .Find(marketName);
 
-            return marketToGetProductsFrom?.ProductInfos ?? Enumerable.Empty<Product>();
+            return marketToGetProductsFrom?.Products ?? Enumerable.Empty<Product>();
         }
 
         public void AddProduct(Product newProduct)
