@@ -4,10 +4,8 @@ namespace Marketplace.DbAccess
 {
     public interface ICartRepository
     {
-        void CreateCustomerCart(Customer customer);
+        Cart GetCustomerCart(string customerLogin);
 
-        Cart GetCustomerCart(Customer customer);
-
-        void RemoveCart(Cart cartToRemove);
+        void UpdateCart(Cart updatedCart);
     }
 }

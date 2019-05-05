@@ -20,7 +20,7 @@ namespace Marketplace.AuctionDomain
 
             if (bet.AmountInUsDollars >= auction.FinalPriceInUsDollars)
             {
-                auction.Winner = bet.Bettor;
+                auction.WinnerLogin = bet.BettorLogin;
                 return true;
             }
 

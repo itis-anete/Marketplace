@@ -36,6 +36,13 @@ namespace Marketplace.Web.Controllers
             return Ok();
         }
 
+        [HttpDelete]
+        public IActionResult RemoveMarket(string marketToDeleteName)
+        {
+            unitOfWork.MarketRepository.RemoveMarket(marketToDeleteName);
+            return Ok();
+        }
+
         [HttpGet]
         public IActionResult GetMarketByName(string marketName)
         {

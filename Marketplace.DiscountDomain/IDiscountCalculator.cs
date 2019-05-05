@@ -4,6 +4,6 @@ namespace Marketplace.DiscountDomain
 {
     public interface IDiscountCalculator
     {
-        void CalculateProductDiscountForCustomer(Product product, Customer customer);
+        double CalculateProductDiscountForCustomer(Product product, Customer customer);
     }
 }

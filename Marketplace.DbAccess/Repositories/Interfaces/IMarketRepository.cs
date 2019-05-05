@@ -15,6 +15,6 @@ namespace Marketplace.DbAccess
 
         void UpdateMarket(Market updatedMarket);
 
-        void RemoveMarket(Market marketToRemove);
+        void RemoveMarket(string marketToRemoveName);
     }
 }

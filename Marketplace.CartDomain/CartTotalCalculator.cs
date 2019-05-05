@@ -14,16 +14,17 @@ namespace Marketplace.CartDomain
             this.discountCalculator = discountCalculator
                 ?? throw new ArgumentNullException(nameof(discountCalculator));
         }
-        
+
         public void CalculateTotal(Cart cart)
         {
-            foreach (var product in cart.Products)
-            {
-                discountCalculator.CalculateProductDiscountForCustomer(product, cart.Customer);
-            }
-
             cart.TotalInUsDollarsWithDiscounts = cart.Products
-                .Sum(product => product.DiscountPriceIsUsDollars);
+                .Sum(product =>
+                {
+                    var discountPrice = discountCalculator
+                        .CalculateProductDiscountForCustomer(product, cart.Customer);
+
+                    return discountPrice * product.Quantity;
+                });
         }
     }
 }

@@ -16,10 +16,14 @@ namespace Marketplace.DbAccess
 
         public IEnumerable<Product> GetAllMarketProducts(string marketName)
         {
-            var marketToGetProductsFrom = applicationContext.Markets
-                .Find(marketName);
+            return applicationContext.Products
+                .Where(product => string.Equals(product.MarketName, marketName,
+                    StringComparison.InvariantCultureIgnoreCase));
+        }
 
-            return marketToGetProductsFrom?.Products ?? Enumerable.Empty<Product>();
+        public Product GetProductById(Guid productId)
+        {
+            return applicationContext.Products.Find(productId);
         }
 
         public void AddProduct(Product newProduct)

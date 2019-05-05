@@ -16,6 +16,8 @@ namespace Marketplace.DbAccess
         
         public DbSet<Customer> Customers { get; private set; }
         
+        public DbSet<Cart> Carts { get; private set; }
+        
         public DbSet<Market> Markets { get; private set; }
         
         public DbSet<ProductCategory> ProductsCategories { get; private set; }
@@ -23,6 +25,8 @@ namespace Marketplace.DbAccess
         public DbSet<Product> Products { get; private set; }
         
         public DbSet<Order> Orders { get; private set; }
+        
+        public DbSet<Auction> Auctions { get; private set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -32,6 +36,26 @@ namespace Marketplace.DbAccess
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+//            modelBuilder.Entity<Product>()
+//                .HasOne<Auction>()
+//                .WithOne("ProductLotId");
+//            
+//            modelBuilder.Entity<Market>()
+//                .HasMany<Auction>()
+//                .WithOne("MarketName");
+//
+//            modelBuilder.Entity<Customer>()
+//                .HasOne<Auction>()
+//                .WithOne("WinnerLogin");
+//
+//            modelBuilder.Entity<Market>()
+//                .HasMany<Product>()
+//                .WithOne("MarketName");
+//
+//            modelBuilder.Entity<Customer>()
+//                .HasMany<Order>()
+//                .WithOne("CustomerLogin");
+            
             modelBuilder.Entity<Customer>()
                 .HasKey(customer => customer.Login);
             

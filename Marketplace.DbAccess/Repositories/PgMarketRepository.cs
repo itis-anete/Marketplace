@@ -45,8 +45,15 @@ namespace Marketplace.DbAccess
             applicationContext.SaveChanges();
         }
 
-        public void RemoveMarket(Market marketToRemove)
+        public void RemoveMarket(string marketToRemoveName)
         {
+            var marketToRemove = applicationContext.Markets.Find(marketToRemoveName);
+
+            if (marketToRemove == null)
+            {
+                return;
+            }
+            
             applicationContext.Markets.Remove(marketToRemove);
             applicationContext.SaveChanges();
         }

@@ -20,8 +20,14 @@ namespace Marketplace.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetSameProducts(Product product)
+        public IActionResult GetSameProducts(Guid productId)
         {
+            var product = unitOfWork.ProductRepository.GetProductById(productId);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            
             var sameProducts = sameProductsFinder.GetSameProducts(product);
 
             if (sameProducts.Any())
@@ -34,7 +40,7 @@ namespace Marketplace.Web.Controllers
 
         [HttpPost]
         public IActionResult AddProduct(Product newProduct)
-        {            
+        {
             unitOfWork.ProductRepository.AddProduct(newProduct);
             return Ok();
         }

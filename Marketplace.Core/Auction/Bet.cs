@@ -1,4 +1,5 @@
 using System;
+using Marketplace.Infrastructure;
 
 namespace Marketplace.Core
 {
@@ -8,23 +9,20 @@ namespace Marketplace.Core
         {
         }
 
-        public Bet(Customer bettor, Product product, double amountInUsDollars)
+        public Bet(string bettorLogin, double amountInUsDollars)
         {
             Id = Guid.NewGuid();
-            Bettor = bettor ?? throw new ArgumentNullException(nameof(bettor));
-            Product = product ?? throw new ArgumentNullException(nameof(product));
+            BettorLogin = bettorLogin.CheckValue();
             AmountInUsDollars = amountInUsDollars;
-            CreationDateTime = DateTimeOffset.Now;
+            CreationDateTime = DateTime.Now;
         }
 
         public Guid Id { get; private set; }
 
-        public Customer Bettor { get; private set; }
-
-        public Product Product { get; private set; }
+        public string BettorLogin { get; private set; }
 
         public double AmountInUsDollars { get; private set; }
 
-        public DateTimeOffset CreationDateTime { get; private set; }
+        public DateTime CreationDateTime { get; private set; }
     }
 }

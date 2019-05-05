@@ -6,12 +6,12 @@ namespace Marketplace.Core.Discounts
         {
         }
 
-        public QuantityDiscount(double percent, int quantityWhenDiscountEnables)
+        public QuantityDiscount(double percent, uint quantityWhenDiscountEnables)
             : base(percent)
         {
             QuantityWhenDiscountEnables = quantityWhenDiscountEnables;
         }
         
-        public int QuantityWhenDiscountEnables { get; private set; }
+        public uint QuantityWhenDiscountEnables { get; private set; }
     }
 }

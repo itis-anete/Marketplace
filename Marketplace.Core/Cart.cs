@@ -14,6 +14,7 @@ namespace Marketplace.Core
         {
             Id = Guid.NewGuid();
             Customer = customer ?? throw new ArgumentNullException(nameof(customer));
+            Products = new List<Product>();
         }
         
         public Guid Id { get; private set; } 
@@ -23,8 +24,14 @@ namespace Marketplace.Core
         public List<Product> Products { get; private set; }
 
         public double TotalInUsDollarsWithoutDiscounts
-            => Products.Sum(productInfo => productInfo.BasePriceInUsDollars);
+            => Products.Sum(product => product.BasePriceInUsDollars * product.Quantity);
         
         public double TotalInUsDollarsWithDiscounts { get; set; }
+
+        public void Reset()
+        {
+            Products = new List<Product>();
+            TotalInUsDollarsWithDiscounts = default;
+        }
     }
 }

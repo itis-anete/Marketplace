@@ -31,8 +31,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Marketplace.AuctionDomain\Marketplace.AuctionDomain.csproj" />
+    <ProjectReference Include="..\Marketplace.CartDomain\Marketplace.CartDomain.csproj" />
     <ProjectReference Include="..\Marketplace.Core\Marketplace.Core.csproj" />
     <ProjectReference Include="..\Marketplace.DbAccess\Marketplace.DbAccess.csproj" />
+    <ProjectReference Include="..\Marketplace.DiscountDomain\Marketplace.DiscountDomain.csproj" />
     <ProjectReference Include="..\Marketplace.Infrastructure\Marketplace.Infrastructure.csproj" />
     <ProjectReference Include="..\Marketplace.ProductDomain\Marketplace.ProductDomain.csproj" />
   </ItemGroup>

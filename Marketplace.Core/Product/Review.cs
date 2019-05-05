@@ -1,25 +1,26 @@
 using System;
 using System.Security.Cryptography;
+using Marketplace.Infrastructure;
 
 namespace Marketplace.Core
 {
-    public class Review
+    public class Review : IEquatable<Review>
     {
         private Review()
         {
         }
         
-        public Review(Customer customer, double rate, string text = null)
+        public Review(string customerLogin, double rate, string text = null)
         {
             Id = Guid.NewGuid();
-            Customer = customer ?? throw new ArgumentNullException(nameof(customer));
+            CustomerLogin = customerLogin.CheckValue();
             Rate = rate;
             Text = text;
         }
         
         public Guid Id { get; private set; }
 
-        public Customer Customer { get; private set; }
+        public string CustomerLogin { get; private set; }
         
         private double rate;
 
@@ -35,5 +36,27 @@ namespace Marketplace.Core
         }
         
         public string Text { get; private set; }
+
+        #region Comparison
+        public bool Equals(Review other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return Id.Equals(other.Id);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Review) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
+        #endregion
     }
 }

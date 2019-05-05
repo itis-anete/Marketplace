@@ -4,8 +4,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.Core", "Marketp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.DbAccess", "Marketplace.DbAccess\Marketplace.DbAccess.csproj", "{3BEA12C9-EB7A-47BB-83C6-AA6718DC514A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.Sockets", "Marketplace.Sockets\Marketplace.Sockets.csproj", "{66F1B3BB-48A1-452F-B39B-FF8448F1FFBB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.Infrastructure", "Marketplace.Infrastructure\Marketplace.Infrastructure.csproj", "{4F610EC8-31E3-4E95-A4B4-3122898448CD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.Web", "MarketPlace.Web\Marketplace.Web.csproj", "{115C5D1A-FA96-4E01-B746-2A8368013F65}"
@@ -34,10 +32,6 @@ Global
 		{3BEA12C9-EB7A-47BB-83C6-AA6718DC514A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BEA12C9-EB7A-47BB-83C6-AA6718DC514A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BEA12C9-EB7A-47BB-83C6-AA6718DC514A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{66F1B3BB-48A1-452F-B39B-FF8448F1FFBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{66F1B3BB-48A1-452F-B39B-FF8448F1FFBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{66F1B3BB-48A1-452F-B39B-FF8448F1FFBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{66F1B3BB-48A1-452F-B39B-FF8448F1FFBB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4F610EC8-31E3-4E95-A4B4-3122898448CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4F610EC8-31E3-4E95-A4B4-3122898448CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F610EC8-31E3-4E95-A4B4-3122898448CD}.Release|Any CPU.ActiveCfg = Release|Any CPU

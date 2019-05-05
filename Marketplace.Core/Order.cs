@@ -1,25 +1,23 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Marketplace.Infrastructure;
 
 namespace Marketplace.Core
 {
     public class Order
-    {
-        private readonly List<Product> products;
-        
-        private Order()
+    {private Order()
         {
         }
 
-        public Order(Customer customer, IEnumerable<Product> products, double totalInUsDollars,
+        public Order(string customerLogin, IEnumerable<Product> products, double totalInUsDollars,
             DateTimeOffset? orderDateTime = null)
         {
             Id = Guid.NewGuid();
-            
-            Customer = customer ?? throw new ArgumentNullException(nameof(customer));
 
-            this.products = products?.ToList() ?? throw new ArgumentNullException(nameof(products));
+            CustomerLogin = customerLogin.CheckValue();
+
+            Products = products?.ToList() ?? throw new ArgumentNullException(nameof(products));
 
             TotalInUsDollars = totalInUsDollars;
             
@@ -28,9 +26,9 @@ namespace Marketplace.Core
         
         public Guid Id { get; private set; }
         
-        public Customer Customer { get; private set; }
+        public string CustomerLogin { get; private set; }
 
-        public IEnumerable<Product> Products => products.AsEnumerable();
+        public List<Product> Products { get; private set; }
         
         public double TotalInUsDollars { get; private set; }
         

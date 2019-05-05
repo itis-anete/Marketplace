@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Marketplace.Core;
@@ -11,21 +12,27 @@ namespace Marketplace.DbAccess
         {
         }
 
-        public void MakeOrder(Cart cart)
+        public void AddNewOrder(Cart cart)
         {
             var newOrder = new Order(
-                cart.Customer, 
+                cart.Customer.Login, 
                 cart.Products, 
                 cart.TotalInUsDollarsWithoutDiscounts);
 
             applicationContext.Orders.Add(newOrder);
+
+            cart.Reset();
+            applicationContext.Carts.Update(cart);
+            
             applicationContext.SaveChanges();
         }
 
-        public IEnumerable<Order> GetAllCustomerOrders(Customer customer)
+        public IEnumerable<Order> GetAllCustomerOrders(string customerLogin)
         {
             return applicationContext.Orders
-                .Where(order => order.Customer.Equals(customer));
+                .Where(order => string.Equals(order.CustomerLogin,
+                    customerLogin,
+                    StringComparison.InvariantCultureIgnoreCase));
         }
     }
 }

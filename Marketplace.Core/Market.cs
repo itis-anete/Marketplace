@@ -5,7 +5,7 @@ using Marketplace.Infrastructure;
 
 namespace Marketplace.Core
 {
-    public class Market
+    public class Market : IEquatable<Market>
     { 
         private Market()
         {
@@ -16,13 +16,32 @@ namespace Marketplace.Core
             Name = name.CheckValue();
             
             ProductsCategories = initialCategories?.ToList() ?? new List<ProductCategory>();
-
-            Products = new List<Product>();
         }
         
         public string Name { get; set; }
 
         public List<ProductCategory> ProductsCategories { get; private set; }
-        public List<Product> Products { get; private set; }
+
+        #region Comparison
+        public bool Equals(Market other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return string.Equals(Name, other.Name);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Market) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return StringComparer.InvariantCultureIgnoreCase.GetHashCode(Name);
+        }
+        #endregion
     }
 }

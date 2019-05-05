@@ -10,19 +10,20 @@ namespace Marketplace.Core
         {
         }
 
-        public Customer(string login, int passwordHash, DateTimeOffset dateOfBirth)
+        public Customer(string login, int passwordHash, DateTime dateOfBirth)
         {
             Login = login.CheckValue();
             
             PasswordHash = passwordHash;
 
-            DateOfBirth = dateOfBirth;}
+            DateOfBirth = dateOfBirth;
+        }
         
         public string Login { get; private set; }
         
         public int PasswordHash { get; private set; }
         
-        public DateTimeOffset DateOfBirth { get; private set; }
+        public DateTime DateOfBirth { get; private set; }
 
         #region Comparison
         public bool Equals(Customer other)

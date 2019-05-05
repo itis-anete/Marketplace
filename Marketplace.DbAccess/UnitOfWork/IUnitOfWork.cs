@@ -7,5 +7,11 @@ namespace Marketplace.DbAccess
         IProductRepository ProductRepository { get; }
         
         IOrderRepository OrderRepository { get; }
+        
+        ICartRepository CartRepository { get; }
+        
+        ICustomerRepository CustomerRepository { get; }
+        
+        IAuctionRepository AuctionRepository { get; }
     }
 }

@@ -11,6 +11,9 @@ namespace Marketplace.DbAccess
             MarketRepository = new PgMarketRepository(applicationContext);
             ProductRepository = new PgProductRepository(applicationContext);
             OrderRepository = new PgOrderRepository(applicationContext);
+            CartRepository = new PgCartRepository(applicationContext);
+            CustomerRepository = new PgCustomerRepository(applicationContext);
+            AuctionRepository = new PgAuctionRepository(applicationContext);
         }
         
         public IMarketRepository MarketRepository { get; }
@@ -18,5 +21,11 @@ namespace Marketplace.DbAccess
         public IProductRepository ProductRepository { get; }
         
         public IOrderRepository OrderRepository { get; }
+        
+        public ICartRepository CartRepository { get; }
+        
+        public ICustomerRepository CustomerRepository { get; }
+        
+        public IAuctionRepository AuctionRepository { get; }
     }
 }

@@ -5,8 +5,8 @@ namespace Marketplace.DbAccess
 {
     public interface IOrderRepository
     {
-        void MakeOrder(Cart cart);
+        void AddNewOrder(Cart cart);
 
-        IEnumerable<Order> GetAllCustomerOrders(Customer customer);
+        IEnumerable<Order> GetAllCustomerOrders(string customerLogin);
     }
 }

@@ -12,18 +12,18 @@ namespace Marketplace.Core
         {
         }
 
-        public Product(string name, string description, IEnumerable<ProductCategory> associatedCategories)
+        public Product(string name, 
+            string description,
+            string marketName,
+            IEnumerable<ProductCategory> associatedCategories)
         {
             Id = Guid.NewGuid();
-            
             Name = name.CheckValue();
-            
             Description = description.CheckValue();
-
+            MarketName = marketName.CheckValue();
             AssociatedCategories = associatedCategories.ToList();
 
             Reviews = new List<Review>();
-            
             Discounts = new List<DiscountBase>();
         }
         
@@ -41,11 +41,9 @@ namespace Marketplace.Core
 
         public double Rating => Reviews.Sum(review => review.Rate) / Reviews.Count;
         
-        public Market Market { get; private set; }
+        public string MarketName { get; private set; }
         
         public double BasePriceInUsDollars { get; private set; }
-
-        public double DiscountPriceIsUsDollars { get; set; }
 
         public uint Quantity { get; set; }
     }
